@@ -8,22 +8,26 @@
         <?php 
             include("ejer3.datos.php"); //Trae el codigo del archivo indicado
             include("ejer3.vista.php");
-            //var_dump($valores);
-            form_cambio($valores);
-            
-            //var_dump($_POST);
-            cambio_moneda($_POST,$valores);
+           
+            if(isset($_POST["ok_lang"])){
+                form_cambio($_POST["idiomas"]);
+            }else {
+                form_cambio();
+            }
+            var_dump($_POST);
+            cambio_moneda($_POST);
 
-            function cambio_moneda($p,$vv){
+            function cambio_moneda($p){
                 /*Para evitar warnings al principio ya que no tenemosel array _POST 
                 debemos comprobar si se ha pulsado el boton enviar antes de utilizar los datos*/
                 if(isset($p['ok'])){//Si esa variable existe
                   
                     $conv=$p['conv'];
                     $cantidad=$p['cantidad'];
-                    $peseta=$cantidad*$vv[$conv];
+                    $peseta=$cantidad*VALORES[$conv];
                     
-                    echo "<h1>$cantidad ".plurales($conv)." son $peseta pesetas </h1>";
+                  
+                    printf(IDIOMAS[$p["oculto"]]["msg"],$cantidad,plurales($conv),$peseta);
                 }
             }
         ?>
