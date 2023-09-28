@@ -14,7 +14,6 @@
         $f.="<input type=\"number\" name=\"cantidad\" value= 0 size=\"10\">\n";
         //$f.= radio($datos,"conv");
         $f.= lista(VALORES,"conv");
-        $f.="<input type=\"hidden\" name=\"oculto\" value=\"".$lang."\">\n";
         $f.="<input type=\"submit\" name=\"ok\" value=\"Enviar\">\n";
         $f.="</form>";
         echo $f;

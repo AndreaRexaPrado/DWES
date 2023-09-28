@@ -14,7 +14,7 @@
             }else {
                 form_cambio();
             }
-            var_dump($_POST);
+            //var_dump($_POST);
             cambio_moneda($_POST);
 
             function cambio_moneda($p){
@@ -27,7 +27,7 @@
                     $peseta=$cantidad*VALORES[$conv];
                     
                   
-                    printf(IDIOMAS[$p["oculto"]]["msg"],$cantidad,plurales($conv),$peseta);
+                    printf(IDIOMAS["es"]["msg"],$cantidad,plurales($conv),$peseta);
                 }
             }
         ?>
