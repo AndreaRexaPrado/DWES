@@ -10,7 +10,7 @@
     $b = array("1"=>"manzana", "0"=>"naranja");
 
     echo "Antes de añadir<br>";
-
+    
     var_dump($a);
     echo "<br>";
     var_dump($b);

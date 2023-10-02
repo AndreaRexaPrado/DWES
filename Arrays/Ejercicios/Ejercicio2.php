@@ -1,15 +1,19 @@
 <?php 
     /* 2. Guardar las claves del array $b en otro array. Nota: array_keys.
     */
-
-    $b = array("1"=>"manzana", "0"=>"naranja");
+    $a = array("manzana", "naraja"); 
+    $b = array(1=>"manzana", "0"=>"naranja");
 
     $arrayClavesB = array_keys($b);
-
+    $arrayClavesA = array_keys($a);
     echo "Antes de añadir<br>";
     var_dump($b);
     echo "<br>";
     var_dump($arrayClavesB);
+
+    var_dump($a);
+    echo "<br>";
+    var_dump($arrayClavesA);
 
     $a[]="uva";
     $b[]="uva";
@@ -22,6 +26,9 @@
     var_dump($b);
     echo "<br>";
     var_dump($arrayClavesB);
+    var_dump($a);
+    echo "<br>";
+    var_dump($arrayClavesA);
 
     /*
     Antes de añadir

@@ -5,7 +5,7 @@
 
     */
 
-    $b = array("1"=>"manzana", "0"=>"naranja");
+    $b = array(1=>"manzana", "0"=>"naranja");
     echo "Antes de ordernar descendentemente por clave <br>";
     var_dump($b);
     echo "<br>";
