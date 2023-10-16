@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+  
+    <productos>
+        <!-- Tabla productos -->
+        <producto cod="1">
+            <nom_prod>Z323</nom_prod>
+            <pvp>51.90</pvp>
+            <prov>J04131348</prov>
+            <img>auriculares-mp3.jpg</img>
+            <existencias>0</existencias>
+        </producto>
+        <producto cod="2">
+            <nom_prod>Z623</nom_prod>
+            <pvp>209.00</pvp>
+            <prov>J04131348</prov>
+            <img>batmanbot.jpeg</img>
+            <existencias>0</existencias>
+        </producto>
+        <producto cod="3">
+            <nom_prod>Z906</nom_prod>
+            <pvp>399.00</pvp>
+            <prov>J04131348</prov>
+            <img>cargador.jpg</img>
+            <existencias>0</existencias>
+        </producto>
+        <producto cod="4">
+            <nom_prod>Z506</nom_prod>
+            <pvp>125.00</pvp>
+            <prov>J04131348</prov>
+            <img>auriculares-mp3.jpg</img>
+            <existencias>0</existencias>
+        </producto>
+        <producto cod="11">
+			<nom_prod>Argon</nom_prod>
+            <pvp>50.00</pvp>
+            <prov>D7767763A</prov>
+            <img>regulador-botella-argon.jpg</img>
+            <existencias>8</existencias>
+        </producto>
+        <producto cod="12">
+            <nom_prod>Neon</nom_prod>
+            <pvp>35.00</pvp>
+            <prov>D7767763A</prov>
+            <img>neon.jpg</img>
+            <existencias>0</existencias>
+        </producto>
+        <producto cod="13">
+            <nom_prod>Ocelote</nom_prod>
+            <pvp>59.90</pvp>
+            <prov>D7767763A</prov>
+            <img>raton-ocelote-gaming.jpg</img>
+            <existencias>8</existencias>
+        </producto>
+        <producto cod="22">
+            <nom_prod>Death Stalker</nom_prod>
+            <pvp>299.99</pvp>
+            <prov>P3941094I</prov>
+            <img>razer-deathstalker-chroma-keyboard.jpg</img>
+            <existencias>0</existencias>
+        </producto>
+        <producto cod="23">
+            <nom_prod>Orb Weaver</nom_prod>
+            <pvp>129.99</pvp>
+            <prov>P3941094I</prov>
+            <img>orbweaverchroma.png</img>
+            <existencias>8</existencias>
+        </producto>
+        
+    </productos>

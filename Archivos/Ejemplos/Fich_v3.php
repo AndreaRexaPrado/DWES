@@ -34,8 +34,8 @@
                     $alumno=explode(" | ",$s);
 
                     $alumnos[$id]["nombre"] = $alumno[0];
-                    $alumnos[$id]["apellido1"] = $alumno[1];
-                    $alumnos[$id]["apellido2"] = $alumno[2];                 
+                    $alumnos[$id]["ape1"] = $alumno[1];
+                    $alumnos[$id]["ape2"] = $alumno[2];                 
                     break;
                 case 2:
                     $alumnos[$id]["fechaNacimiento"] = date("d-m-Y",strtotime($s));
@@ -58,8 +58,7 @@
             }
 
         }
-        //print_r($alumnos);
-        //tabla($alumnos);
+
         generarFichInsert($alumnos,$fout);
 
     }

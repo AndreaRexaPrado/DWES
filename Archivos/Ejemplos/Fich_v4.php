@@ -63,20 +63,26 @@
             }else{
                 echo "EXITO";
             }
+            return $conn;
         }
-        function generarFichInsert($alumnos,$fout){
+        function generarFichInsert($alumnos,$fout,$conn){
 
             
             foreach($alumnos as $k => $v){
-                $insert="INSERT INTO ALUMNOS (numexp,nombre,ape1,ape2,fnac,ciclo) VALUES (".intval($k).",'$v[apellido1]','$v[apellido2]','$v[nombre]','".date('Y-m-d',strtotime($v['fechaNacimiento']))."','$v[curso]');\n";
-                fwrite($fout,$insert);
+                $sql = "INSERT INTO ALUMNOS (numexp,nombre,ape1,ape2,fnac,ciclo) VALUES (".intval($k).",'$v[apellido1]','$v[apellido2]','$v[nombre]','".date('Y-m-d',strtotime($v['fechaNacimiento']))."','$v[curso]');\n";
+                    if (mysqli_query($conn, $sql)) {
+                        echo "New record created successfully";
+                    } else {
+                        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    }
+                fwrite($fout,$sql);
             }
 
         }
         //print_r($alumnos);
         //tabla($alumnos);
-        //generarFichInsert($alumnos,$fout);
-        conectBBDD();
+        generarFichInsert($alumnos,$fout,conectBBDD());
+        
     }
 
     

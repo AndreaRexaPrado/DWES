@@ -1,0 +1,14 @@
+INSERT INTO ALUMNOS (numexp,nombre,ape1,ape2,fnac,ciclo) VALUES (3345,"Juan","Perez","Rodriguez"2000-04-19,"DAM");
+INSERT INTO ALUMNOS (numexp,nombre,ape1,ape2,fnac,ciclo) VALUES (4567,"Luis","Garcia","Carrion"1998-03-21,"DAW");
+INSERT INTO ALUMNOS (numexp,nombre,ape1,ape2,fnac,ciclo) VALUES (1123,"Ana Isabel","Lopez","Lopez"1999-12-21,"DAM");
+INSERT INTO ALUMNOS (numexp,nombre,ape1,ape2,fnac,ciclo) VALUES (2345,"Maira","Marin","Lopez"1999-05-01,"DAM");
+INSERT INTO ALUMNOS (numexp,nombre,ape1,ape2,fnac,ciclo) VALUES (2346,"Pepe","Perez de Marin","Lopez"1999-05-15,"DAM");
+INSERT INTO ALUMNOS (numexp,nombre,ape1,ape2,fnac,ciclo) VALUES (2347,"Oscar","Martinez","Lopez"1999-08-01,"DAW");
+INSERT INTO ALUMNOS (numexp,nombre,ape1,ape2,fnac,ciclo) VALUES (2348,"Juan","Marin","Garcia"1999-05-12,"DAW");
+INSERT INTO ALUMNOS (numexp,nombre,ape1,ape2,fnac,ciclo) VALUES (2349,"Pepa","Garcia","Lopez"2000-05-01,"DAM");
+INSERT INTO ALUMNOS (numexp,nombre,ape1,ape2,fnac,ciclo) VALUES (2350,"Pepe","Martinez","Lopez"1999-03-01,"DAW");
+INSERT INTO ALUMNOS (numexp,nombre,ape1,ape2,fnac,ciclo) VALUES (2351,"Pedro","Vazquez de Mella","Martin"1999-03-16,"DAM");
+INSERT INTO ALUMNOS (numexp,nombre,ape1,ape2,fnac,ciclo) VALUES (2352,"Ana","Garcia","Martin"2020-01-16,"DAW");
+INSERT INTO ALUMNOS (numexp,nombre,ape1,ape2,fnac,ciclo) VALUES (2353,"Nuï¿½o","Nuï¿½ez","Garcia"2001-01-20,"DAM");
+INSERT INTO ALUMNOS (numexp,nombre,ape1,ape2,fnac,ciclo) VALUES (2354,"Nuria","Vazquez","Lopez"2000-12-01,"DAW");
+INSERT INTO ALUMNOS (numexp,nombre,ape1,ape2,fnac,ciclo) VALUES (1111,"Andrea","Rexa","Prado"2000-12-01,"DAW");
