@@ -15,7 +15,8 @@ session_start();
 session_unset();
 echo "Sesion: ". session_id();
 $_SESSION["identificador"] = generateRandomString();
-$_SESSION["contador"] = 1;
+$visitas=1;
+$_SESSION["contador"] = $visitas+1;
 $_SESSION["ultima"] = date("d-M-Y h:i:s",time());
 
 $mss1 = "<p>Ya estaba registrado</p>";
@@ -25,10 +26,7 @@ var_dump($_SESSION);
 echo "<br>";
 if(isset($_SESSION['identificador'])&&isset($_SESSION['contador'])&&isset($_SESSION['ultima'])){
     
-    $visitas=intval($_SESSION['contador']);
-    echo $visitas;
-    $visitas+=1;
-    $_SESSION['contador']=$visitas;
+
     echo $mss1;
     echo "Numero de visitas: ".$_SESSION['contador']."<br>";
     echo "Ultima visita: ".$_SESSION['ultima'];
