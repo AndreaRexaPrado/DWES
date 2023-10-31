@@ -1,0 +1,6 @@
+ul li {
+     display: inline;
+     float: left;
+     margin-left: 20;
+     list-style: none;
+}

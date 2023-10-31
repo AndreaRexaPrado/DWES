@@ -23,6 +23,7 @@
     $fin = 2.2;
     $todo = $ini . $fin; // el concat con int los trata como texto
     echo "<br>".$todo."<br>";
+    echo "$_POST[NUMERO] $_POST['NUMERO']"
     ?>
 </body>
 
