@@ -61,8 +61,11 @@
         $d=BR.BR.BR."<h3>Consulta de expedientes</h3>".N;
         $d.="<form method=\"post\" action=".$_SERVER['PHP_SELF'].">".N;
         $d.="<select name='exps'>".N;
+        $al_ord=($alumnos);
+        usort($al_ord,'compararPorApe1');
+
         foreach($numExp as $k => $v){
-            $d.="<option value='$v'>$v</option>".N;
+            $d.="<option value='$v'>".$al_ord[$v]['ape1']." ".$al_ord[$v]['ape2'].",".$al_ord[$v]['nombre']."</option>".N;
         }
         $d.="</select>";
         $d.="<input type=\"submit\" name=\"ok_cons\" value=\"Enviar\">".N;
@@ -77,7 +80,7 @@
 
         $values = array("numexp");
         $keys = array_keys($alumno);
-        
+
         foreach($keys as $k => $v){
             $values[] = $v;
         }
@@ -85,6 +88,7 @@
         foreach($values as $k => $v){
             $t.="<th>".TITULOS[$v]."</th>";
         }
+
         $t.="</thead>".N;
         $t.="<tbody>".N;
         $t.="<tr>".N;
@@ -103,19 +107,32 @@
     }
     
     function generarFormNuevo(){
+        
         $f=BR.BR.BR."<h3>Nuevo alumno</h3>".N;
         $f.="<form method=\"post\" action=".$_SERVER['PHP_SELF'].">".N;
-        $f.="<label>Nombre</label><input type='text' name='nom'>".N.BR;
-        $f.="<label>Apellido 1</label><input type='text' name='ape1'>".N.BR;
-        $f.="<label>Apellido 2</label><input type='text' name='ape1'>".N.BR;
-        $f.="<label>Fecha Nacimiento</label><input type='date' name='fnac'>".N.BR;
-        $f.="<label>Ciclo</label><select name='ciclos'>".N.BR;
-        $f.="<option value='DAM'>DAM</option>".N;
-        $f.="<option value='DAW'>DAW</option>".N;
+        foreach(TITULOS as $k => $v){
+            if($k !== "ciclo"&&$k !== "numexp"){
+                
+                if($k === "fnac"){
+                    $f.="<label>$v</label><input type='date' name='$k'>".N.BR;
+                }else{
+                    $f.="<label>$v</label><input type='text' name='$k'>".N.BR;
+                }
+            }
+            
+        }
+        $ciclos = getCiclos();
+        $f.="<label>".TITULOS["ciclo"]."</label><select name='ciclo'>".N.BR;
+        foreach($ciclos as $k => $v){
+            $f.="<option value='$v'>$v</option>".N;
+        }
         $f.="</select>".BR;
         $f.="<input type='submit'\"' name=\"ok_nuevo\" value=\"Enviar\">".N;
         $f.="</form>".N;
         echo $f;
     }
-    
+
+    function compararPorApe1($a, $b) {
+        return strcmp($a['ape1'], $b['ape1']);
+    }
 ?>
