@@ -27,6 +27,7 @@
  * Solo se usara el script alumnos.php para mostrar datos
  *  
  */
+    include("data/dao_alumnos.inc.php");
     include("alumnos_vista.php");
     generarForm();
     $alumnos = getAll();
@@ -34,9 +35,8 @@
         generarTabla($alumnos);
     }
     if(isset($_POST['cons'])){   
-       // $alumnos = getAll();
-       print_r($alumnos);
-        generarDespegable($alumnos);
+
+        generarDespegable($alumnos,"cons");
     }
     
     if(isset($_POST['ok_cons'])){
@@ -47,10 +47,57 @@
         generarFormNuevo();
     }
     if(isset($_POST['ok_nuevo'])){
+        $valido=true;
+        
+        foreach($_POST as $k => $v){
+            if($k != "ok_nuevo"){
+                if(empty($v)){
+                    $valido=false;
+                    break;
+                }
+            }
+        }
+        if($valido){
+            $alumno=array(generarNumExp($alumnos)=>array("nombre"=>$_POST["nombre"],"ape1"=>$_POST["ape1"],"ape2"=>$_POST["ape2"],"fnac"=>date("d-m-Y",strtotime($_POST["fnac"])),"ciclo"=>$_POST["ciclo"]));
+            save($alumno);
+        }else{
+            echo BR.BR.BR."<p style='color:red'>Algun dato vacio</p>";
+        }
+        
+        
 
-        $arr=array("nombre"=>$_POST["nombre"],"ape1"=>$_POST["ape1"],"ape2"=>$_POST["ape2"],"fnac"=>date("d-m-Y",strtotime($_POST["fnac"])),"ciclo"=>$_POST["ciclo"]);
-        save(generarNumExp($alumnos),$arr);
+    }
 
+    if(isset($_POST['update'])){
+        generarDespegable($alumnos,"upd");
+    }
+
+    if(isset($_POST['ok_upd'])){
+        $al=get($_POST['exps']);
+
+        generarFormActualizar($al);
+        $_POST['exps']=$_POST['exps'];
+        setcookie('exp', $_POST['exps']);
+
+    }
+
+    if(isset($_POST['ok_upd_form'])){
+        $valido=true;
+        //print_r($_POST);
+        foreach($_POST as $k => $v){
+            if($k != "ok_nuevo"){
+                if(empty($v)){
+                    $valido=false;
+                    break;
+                }
+            }
+        }
+        if($valido){
+            $alumno=array($_COOKIE['exp']=>array("nombre"=>$_POST["nombre"],"ape1"=>$_POST["ape1"],"ape2"=>$_POST["ape2"],"fnac"=>date("d-m-Y",strtotime($_POST["fnac"])),"ciclo"=>$_POST["ciclo"]));
+            update($alumno);
+        }else{
+            echo BR.BR.BR."<p style='color:red'>Algun dato vacio</p>";
+        }
     }
 
     function generarNumExp($alumnos) {

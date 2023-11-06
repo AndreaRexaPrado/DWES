@@ -3,7 +3,8 @@
  * Metodos del patron DAO
  */
 define("lineas",4);
-
+define("TITULOS",array("numexp" =>"Numero de expediente","nombre" =>"Nombre","ape1" =>"Primer Apellido","ape2" =>"Segundo Apellido","fnac"=>"Fecha nacimiento","ciclo"=>"Ciclo formativo"));
+define("UTF","UTF-8");    
 
 function getAll(){
     $modelo= "data/alumnos.txt"; //Archivo con los datos
@@ -24,7 +25,7 @@ function getAll(){
         
         while(!feof($f)){
             
-            $s = mb_convert_encoding(trim(fgets($f)),'ISO-8859-1','UTF-8');
+            $s = mb_convert_encoding(trim(fgets($f)),UTF);
       
                 switch($lineaNum%lineas){
                     case 0:
@@ -61,34 +62,45 @@ function get($key){
     return $alumnos[$key];
 }
 
-function save($item_id,$item){
+function save($item){
     //guarda el elemento que se recibe como parametro
     //relacionado con ESTRATEGIAS de INSERCION
     //(Decisiones que se toman a la hora de insertar ej: si el alumno esta repetido no dejar insertalo)
-
     //Algunas veces, save sustituye a update
+    $item_arr=$item[array_key_first($item)];
 
-    $alumnos=getAll();
-    $alumnos[$item_id]=$item;
+    $fout=fopen("data/alumnos.txt","a");
 
-    $fout=fopen("data/alumnos.txt","w");
-    foreach($alumnos as $k => $v){
-        fwrite($fout,$k."\n");
-        $al= $v["nombre"]." | ".$v["ape1"]." | ".$v["ape2"];
-        fwrite($fout,$al."\n");
-        fwrite($fout,$v["fnac"]."\n");
-        fwrite($fout,$v["ciclo"]."\n");
-        
-    }
-
+    fwrite($fout,key($item)."\n");
+    $al= mb_convert_encoding($item_arr["nombre"]." | ".$item_arr["ape1"]." | ".$item_arr["ape2"],UTF);
+    fwrite($fout,$al."\n");
+    fwrite($fout,$item_arr["fnac"]."\n");
+    fwrite($fout,$item_arr["ciclo"]."\n");
+    
+    
+    fclose($fout);
 }
 
 function update($item){
     //actualiza el elemento que se recibe como parametro
-    //relacionado con ESTRATEGIAS de ACTUALIZCION
+    //relacionado con ESTRATEGIAS de ACTUALIZACION
     //(Decisiones que se toman a la hora de actualizar ej: si el alumno esta repetido actualizarlo)
 
     //Algunas veces, se incluye en el save
+    $alumnos = getAll();
+    //print_r($item);
+    $item_arr=$item[array_key_first($item)];
+    $al=$alumnos[key($item)];
+    print_r($al);
+    $al['nombre'] = $item_arr['nombre'];
+    $al['ape1'] = $item_arr['ape1'];
+    $al['ape2'] = $item_arr['ape2'];
+    $al['fnac'] = $item_arr['fnac'];
+    $al['ciclo'] = $item_arr['ciclo'];
+    
+    
+    //print_r($alumnos);
+    
 }
 function delete($item){
     //borra el elemento que se recibe como parametro
