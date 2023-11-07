@@ -4,7 +4,7 @@
             /*
             En php cualquier variabale puede ser tratada como boolean,
             */
-            define("BR","<br>\n"); //Contastes
+            define("BR","<br>\n"); //Costantes
             
             echo "Esto es".BR." un salto de linea";   
             $v0=0;

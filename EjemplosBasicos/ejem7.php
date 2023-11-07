@@ -6,8 +6,7 @@
             $v1=100;
             $v2=$v1; //asignamos EL VALOR y TIPO a v2
             echo "<br> v1: $v1";
-            echo "<br> v2: $v2";
-   
+            echo "<br> v2: $v2";  
             //modificamos el valor de v1
             echo "<br>Modificacion de valor v1";
             $v1=500;

@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Teoria</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+/* From extension bierner.markdown-checkbox */
+.contains-task-list {
+    padding-left: 0;
+}
+
+.contains-task-list li {
+    margin-left: 24px;
+}
+
+.contains-task-list .task-list-item {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.contains-task-list .contains-task-list {
+    padding-left: 20px;
+} 
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <ul>
+<li><a href="#teoria">Teoria</a>
+<ul>
+<li><a href="#teoria-ud1">Teoria UD1</a></li>
+</ul>
+</li>
+<li><a href="#codigo">Codigo</a>
+<ul>
+<li><a href="#codigo-basico">Codigo Basico</a>
+<ul>
+<li><a href="#comentarios-decalaracion-de-variables-concatenacion">Comentarios, decalaracion de variables, concatenacion</a></li>
+<li><a href="#comillas">Comillas</a></li>
+<li><a href="#imprimir-tabla-html-y-for">Imprimir tabla html y for</a></li>
+<li><a href="#echo-vs-print">Echo vs print</a></li>
+<li><a href="#gettype">Gettype</a></li>
+<li><a href="#trabajo-de-variables">Trabajo de variables</a></li>
+<li><a href="#arrays-trabajo-basico">Arrays, trabajo basico</a></li>
+<li><a href="#-variabes-como-boolean-y-constantes">===, variabes como boolean y constantes</a></li>
+<li><a href="#funciones">Funciones</a></li>
+<li><a href="#_server">$_SERVER</a></li>
+<li><a href="#capicua-v1">Capicua v1</a></li>
+<li><a href="#capicua-v2">Capicua v2</a></li>
+<li><a href="#include-require-include_once-require_once">Include, require, include_once, require_once</a></li>
+</ul>
+</li>
+<li><a href="#arrays">Arrays</a>
+<ul>
+<li><a href="#reindexar">Reindexar</a></li>
+<li><a href="#a%C3%B1adir-elementos">Añadir elementos</a></li>
+<li><a href="#array_keys">array_keys</a></li>
+<li><a href="#ordenacion">Ordenacion</a></li>
+<li><a href="#ordenacion-definida-por-el-usario">Ordenacion definida por el usario</a></li>
+<li><a href="#array_values">array_values</a></li>
+<li><a href="#explode">Explode</a></li>
+<li><a href="#implode">Implode</a></li>
+<li><a href="#str_replace">Str_replace</a></li>
+<li><a href="#md5">md5</a></li>
+<li><a href="#array_multisort">array_multisort</a></li>
+</ul>
+</li>
+<li><a href="#formularios">Formularios</a>
+<ul>
+<li><a href="#post-a-otro-archivo">Post a otro archivo</a></li>
+<li><a href="#mvc">MVC</a></li>
+</ul>
+</li>
+<li><a href="#imagenes">Imagenes</a>
+<ul>
+<li><a href="#iterara-correctamente">Iterara correctamente</a></li>
+<li><a href="#tabla-de-img">Tabla de img</a></li>
+<li><a href="#crear-miniaturas-hay-que-instalar-algo">Crear miniaturas (hay que instalar algo)</a></li>
+<li><a href="#subir-imgs">Subir imgs</a></li>
+</ul>
+</li>
+<li><a href="#archivos">Archivos</a>
+<ul>
+<li><a href="#lectura-caracter-a-caracter">Lectura caracter a caracter</a></li>
+<li><a href="#lectura-linea-a-linea">Lectura linea a linea</a></li>
+<li><a href="#generar-fich-ins">Generar fich ins</a></li>
+</ul>
+</li>
+<li><a href="#sesiones-y-cookies">Sesiones y cookies</a></li>
+</ul>
+</li>
+<li><a href="#metodos">Metodos</a></li>
+</ul>
+<h1 id="teoria">Teoria</h1>
+<h2 id="teoria-ud1">Teoria UD1</h2>
+<p><strong>HTTP</strong> (Protoloco de Transferencia de HiperTexto)</p>
+<h1 id="codigo">Codigo</h1>
+<h2 id="codigo-basico">Codigo Basico</h2>
+<h3 id="comentarios-decalaracion-de-variables-concatenacion">Comentarios, decalaracion de variables, concatenacion</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-comment">//Esto es un comentario de una linea</span>
+        <span class="hljs-comment">/*y
+        este
+        de
+        varias    
+        */</span>
+        <span class="hljs-variable">$ini</span> = <span class="hljs-string">&quot;Hola &quot;</span>;
+        <span class="hljs-variable">$fin</span> = <span class="hljs-string">&quot; a todos&quot;</span>;
+        <span class="hljs-variable">$todo</span> = <span class="hljs-variable">$ini</span> . <span class="hljs-variable">$fin</span>; <span class="hljs-comment">//. es el operador de  concat</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-variable">$todo</span>;
+        <span class="hljs-comment">//No hay tipado las variables pueden cambiar en cualquier momento</span>
+        <span class="hljs-variable">$ini</span> = <span class="hljs-number">1</span>;
+        <span class="hljs-variable">$fin</span> = <span class="hljs-number">2.2</span>;
+        <span class="hljs-variable">$todo</span> = <span class="hljs-variable">$ini</span> . <span class="hljs-variable">$fin</span>; <span class="hljs-comment">// el concat con int los trata como texto</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>.<span class="hljs-variable">$todo</span>.<span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="comillas">Comillas</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-variable">$n1</span> = <span class="hljs-number">1</span>;
+        <span class="hljs-variable">$n2</span> = <span class="hljs-number">2</span>;
+        <span class="hljs-variable">$suma</span> = <span class="hljs-variable">$n1</span> + <span class="hljs-variable">$n2</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;suma = &quot;</span> . <span class="hljs-variable">$suma</span> . <span class="hljs-string">&quot;&lt;br/&gt;&quot;</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;suma = <span class="hljs-subst">$suma</span> &lt;br/&gt;&quot;</span>; <span class="hljs-comment">//comillas magicas: las variables simples se puede poner en echo y extraera su valor con $variable</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;<span class="hljs-subst">$n1</span>+<span class="hljs-subst">$n2</span>&lt;br/&gt;&quot;</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;\$n1+\$n2&lt;br/&gt;&quot;</span>;<span class="hljs-comment">// con la barra se realiza el escape tal cual el caracter o cadena</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;$n1+$n2&lt;br/&gt;&#x27;</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;\&quot;hola\&quot;&quot;</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">phpinfo</span>(); <span class="hljs-comment">//Imprime toda la informacion del servidor</span>
+    <span class="hljs-meta">?&gt;</span> 
+</code></pre>
+<h3 id="imprimir-tabla-html-y-for">Imprimir tabla html y for</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;table border=1&gt;&quot;</span>;
+        <span class="hljs-variable">$n</span> = <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-variable">$n1</span> = <span class="hljs-number">1</span>; <span class="hljs-variable">$n1</span> &lt;= <span class="hljs-number">10</span>; <span class="hljs-variable">$n1</span>++) {
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;tr&gt;&quot;</span>;
+            <span class="hljs-keyword">for</span> (<span class="hljs-variable">$n2</span> = <span class="hljs-number">1</span>; <span class="hljs-variable">$n2</span> &lt;= <span class="hljs-number">10</span>; <span class="hljs-variable">$n2</span>++) {
+                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;td&gt;&quot;</span>, <span class="hljs-variable">$n</span>, <span class="hljs-string">&quot;&lt;/td&gt;&quot;</span>;
+                <span class="hljs-variable">$n</span> = <span class="hljs-variable">$n</span> + <span class="hljs-number">1</span>;
+            }
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/tr&gt;&quot;</span>;
+        }
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/table&gt;&quot;</span>;
+    <span class="hljs-meta">?&gt;</span> 
+</code></pre>
+<h3 id="echo-vs-print">Echo vs print</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-variable">$hora</span> = <span class="hljs-title function_ invoke__">date</span> (<span class="hljs-string">&quot;H&quot;</span>, <span class="hljs-title function_ invoke__">time</span>());
+            <span class="hljs-keyword">if</span>(<span class="hljs-variable">$hora</span>&gt;<span class="hljs-number">20</span> || <span class="hljs-variable">$hora</span>&lt;<span class="hljs-number">4</span>)
+            {
+                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Buenos noches&lt;/h1&gt;&quot;</span>;
+            }<span class="hljs-keyword">else</span>
+            {
+                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Buenos dias&lt;/h1&gt;&quot;</span>;
+            }
+        <span class="hljs-comment">//Resuelve funciones antiguamente echo no lo hacia</span>
+        <span class="hljs-keyword">print</span> ( <span class="hljs-string">&quot;&lt;br/&gt;&quot;</span>.<span class="hljs-title function_ invoke__">date</span>(<span class="hljs-string">&quot;M d, Y H:i:s&quot;</span>, <span class="hljs-title function_ invoke__">time</span>())); 
+        <span class="hljs-variable">$var1</span>=<span class="hljs-string">&#x27;&lt;br/&gt;hola&#x27;</span>;
+        <span class="hljs-variable">$var2</span>=<span class="hljs-string">&quot;<span class="hljs-subst">$var1</span> mundo&quot;</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-variable">$var2</span>;
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="gettype">Gettype</h3>
+<pre><code class="language-php">
+    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-variable">$mivar</span> = <span class="hljs-number">123</span>;
+        <span class="hljs-keyword">print</span> (<span class="hljs-title function_ invoke__">gettype</span>(<span class="hljs-variable">$mivar</span>));
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>.<span class="hljs-variable">$mivar</span>; <span class="hljs-comment">// no se convierte en string</span>
+
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;De string entero&quot;</span>;
+        <span class="hljs-variable">$mivar</span> = <span class="hljs-string">&#x27;3&#x27;</span>;
+        <span class="hljs-comment">/*print (&#x27;&lt;br&gt;&#x27;.gettype($mivar));
+        echo &#x27;&lt;br&gt;&#x27;.$mivar;
+        $mivar = 2 + $mivar; el operador + convierte el valor de la
+                               variable de mivar entero, luego el operador =
+                               convierte el tipo a entero de mivar
+                               debido a la prioridad de operaciones (* &gt; + &gt; =)
+                              
+        print (&#x27;&lt;br&gt;&#x27;.gettype($mivar));
+        echo &#x27;&lt;br&gt;&#x27;.$mivar;
+        */</span>
+        <span class="hljs-variable">$otra</span>=<span class="hljs-number">2</span>*<span class="hljs-variable">$mivar</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>.<span class="hljs-variable">$mivar</span>;
+        <span class="hljs-keyword">print</span> (<span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>.<span class="hljs-string">&quot;tipo de mivar &quot;</span>.<span class="hljs-title function_ invoke__">gettype</span>(<span class="hljs-variable">$mivar</span>));
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>.<span class="hljs-variable">$otra</span>;
+        <span class="hljs-comment">//$otra = (string) $otra;//se convierte el tipo con el casteo pero con el = se le cambia a la variable.</span>
+        <span class="hljs-keyword">print</span> (<span class="hljs-string">&#x27;&lt;br&gt;&#x27;</span>.<span class="hljs-string">&quot;tipo de otra &quot;</span>.<span class="hljs-title function_ invoke__">gettype</span>(<span class="hljs-variable">$otra</span>));
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="trabajo-de-variables">Trabajo de variables</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-comment">/*copia de variables por valor */</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Copia de variables&quot;</span>;
+        <span class="hljs-variable">$v1</span>=<span class="hljs-number">100</span>;
+        <span class="hljs-variable">$v2</span>=<span class="hljs-variable">$v1</span>; <span class="hljs-comment">//asignamos EL VALOR y TIPO a v2</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt; v1: <span class="hljs-subst">$v1</span>&quot;</span>; 
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt; v2: <span class="hljs-subst">$v2</span>&quot;</span>;  
+        <span class="hljs-comment">//modificamos el valor de v1</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;Modificacion de valor v1&quot;</span>;
+        <span class="hljs-variable">$v1</span>=<span class="hljs-number">500</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt; v1: <span class="hljs-subst">$v1</span>&quot;</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt; v2: <span class="hljs-subst">$v2</span>&quot;</span>;
+        <span class="hljs-comment">//copia de variables por referencia</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;Copia por referencia&quot;</span>;
+        <span class="hljs-variable">$v2</span>=&amp;<span class="hljs-variable">$v1</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt; v1: <span class="hljs-subst">$v1</span>&quot;</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt; v2: <span class="hljs-subst">$v2</span>&quot;</span>;
+        <span class="hljs-comment">//Se modifica v1, al v2 tener la referencia apuntando </span>
+        <span class="hljs-comment">//al valor de v1 tambien cambia.</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;Se cambia el valor de v1&quot;</span>;
+        <span class="hljs-variable">$v1</span>=<span class="hljs-number">375</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt; v1: <span class="hljs-subst">$v1</span>&quot;</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt; v2: <span class="hljs-subst">$v2</span>&quot;</span>;
+        <span class="hljs-comment">//Se aplica tambien al modificar v2</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;Se cambia el valor de v2&quot;</span>;
+        <span class="hljs-variable">$v2</span> = <span class="hljs-number">5</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt; v1: <span class="hljs-subst">$v1</span>&quot;</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt; v2: <span class="hljs-subst">$v2</span>&quot;</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;Se desvincula v2 de v1 con unset&quot;</span>;
+        <span class="hljs-keyword">unset</span>(<span class="hljs-variable">$v2</span>); <span class="hljs-comment">// la variable desaparece de la pila, podemos volver a usarla cuando queramos</span>
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt; v1: <span class="hljs-subst">$v1</span>&quot;</span>;
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$v2</span>)) <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt; v2: <span class="hljs-subst">$v2</span>&quot;</span>;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;v2: la variable no existe&quot;</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;v2 se vuelve a crear&quot;</span>;
+        <span class="hljs-variable">$v2</span>=<span class="hljs-number">2</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt; v1: <span class="hljs-subst">$v1</span>&quot;</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt; v2: <span class="hljs-subst">$v2</span>&quot;</span>;
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="arrays-trabajo-basico">Arrays, trabajo basico</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+            <span class="hljs-variable">$arr1</span> = [
+                <span class="hljs-number">0</span> =&gt; <span class="hljs-number">444</span>,
+                <span class="hljs-number">1</span> =&gt; <span class="hljs-number">555</span>,
+                <span class="hljs-number">7</span> =&gt; <span class="hljs-number">666</span>,
+                <span class="hljs-string">&quot;hola&quot;</span> =&gt; <span class="hljs-string">&quot;que tal&quot;</span>
+            ];
+        <span class="hljs-variable">$arr1</span>[]=<span class="hljs-string">&quot;otro&quot;</span>;  
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Array con print_r&lt;/h1&gt;&quot;</span>;    
+        <span class="hljs-title function_ invoke__">print_r</span>(<span class="hljs-variable">$arr1</span>);
+
+        <span class="hljs-variable">$arr1</span>[<span class="hljs-string">&quot;fin&quot;</span>]=<span class="hljs-string">&quot;adios&quot;</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Array con var_dump&lt;/h1&gt;&quot;</span>; 
+        <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$arr1</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Array con bucle foreach SOLO LOS VALORES &lt;/h1&gt;&quot;</span>; 
+        <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$arr1</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$v</span>){
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt; <span class="hljs-subst">$v</span>&quot;</span>; <span class="hljs-comment">//visuala solo los valores</span>
+        }
+        <span class="hljs-variable">$arr1</span>[<span class="hljs-number">5</span>]=<span class="hljs-number">5</span>; <span class="hljs-comment">//NO ESTAN ORDENADO, VA POR ORDEN DE INSERCION</span>
+        <span class="hljs-variable">$arr1</span>[<span class="hljs-number">1</span>]=<span class="hljs-string">&quot;dos&quot;</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Array con bucle foreach CLAVE-VALOR&lt;/h1&gt;&quot;</span>; 
+        <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$arr1</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$k</span> =&gt;<span class="hljs-variable">$v</span>){
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt; la clave &lt;b&gt;<span class="hljs-subst">$k</span>&lt;/b&gt; corresponde al valor: <span class="hljs-subst">$v</span>&quot;</span>;
+        }
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Otra forma de crear un array&lt;/h1&gt;&quot;</span>;
+        <span class="hljs-variable">$a</span> = <span class="hljs-keyword">array</span> (<span class="hljs-number">1</span>,<span class="hljs-literal">true</span>,<span class="hljs-string">&quot;c&quot;</span>); 
+        <span class="hljs-title function_ invoke__">print_r</span>(<span class="hljs-variable">$a</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+        <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$a</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Borrar un indice de un array&lt;/h1&gt;&quot;</span>;
+        <span class="hljs-keyword">unset</span>(<span class="hljs-variable">$a</span>[<span class="hljs-number">0</span>]);
+        <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$a</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Si intentamos imprimir un valor que no existe&lt;/h1&gt;&quot;</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-variable">$a</span>[<span class="hljs-number">0</span>]; <span class="hljs-comment">//WARNING </span>
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="-variabes-como-boolean-y-constantes">===, variabes como boolean y constantes</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-comment">/*
+        En php cualquier variabale puede ser tratada como boolean,
+        */</span>
+        <span class="hljs-title function_ invoke__">define</span>(<span class="hljs-string">&quot;BR&quot;</span>,<span class="hljs-string">&quot;&lt;br&gt;\n&quot;</span>); <span class="hljs-comment">//Constantes</span>
+            
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Esto es&quot;</span>.BR.<span class="hljs-string">&quot; un salto de linea&quot;</span>;   
+        <span class="hljs-variable">$v0</span>=<span class="hljs-number">0</span>;
+        <span class="hljs-variable">$v1</span> = <span class="hljs-number">5</span>;
+        <span class="hljs-variable">$s</span> =<span class="hljs-string">&quot;&quot;</span>;
+           
+        <span class="hljs-keyword">if</span>(<span class="hljs-variable">$v1</span>) <span class="hljs-keyword">echo</span> BR.<span class="hljs-string">&quot;<span class="hljs-subst">$v1</span> es TRUE&quot;</span>;
+        <span class="hljs-keyword">if</span>(<span class="hljs-variable">$v1</span>===<span class="hljs-literal">true</span>) <span class="hljs-keyword">echo</span> BR.<span class="hljs-string">&quot;<span class="hljs-subst">$v1</span> es TRUE&quot;</span>;
+
+        <span class="hljs-keyword">if</span>(<span class="hljs-variable">$v0</span>) <span class="hljs-keyword">echo</span> BR.<span class="hljs-string">&quot;<span class="hljs-subst">$v0</span> es FALSE&quot;</span>;
+        <span class="hljs-keyword">if</span>(<span class="hljs-variable">$v0</span>!==<span class="hljs-literal">true</span>) <span class="hljs-keyword">echo</span> BR.<span class="hljs-string">&quot;<span class="hljs-subst">$v0</span> es FALSE&quot;</span>;
+
+        <span class="hljs-keyword">if</span>(!<span class="hljs-variable">$s</span>) <span class="hljs-keyword">echo</span> BR.<span class="hljs-string">&quot;String vacio <span class="hljs-subst">$s</span> es FALSE&quot;</span>;
+        <span class="hljs-variable">$s</span>= <span class="hljs-string">&quot;ddasd&quot;</span>;
+        <span class="hljs-keyword">if</span>(<span class="hljs-variable">$s</span>) <span class="hljs-keyword">echo</span> BR.<span class="hljs-string">&quot;String <span class="hljs-subst">$s</span> es TRUE&quot;</span>;
+            
+        <span class="hljs-variable">$a</span>= <span class="hljs-keyword">array</span>();
+        <span class="hljs-keyword">if</span>(!<span class="hljs-variable">$a</span>) BR.<span class="hljs-string">&quot;Array vacio es FALSE&quot;</span>;
+        <span class="hljs-variable">$n</span>= <span class="hljs-literal">NULL</span>;
+        <span class="hljs-keyword">if</span>(!<span class="hljs-variable">$n</span>) BR.<span class="hljs-string">&quot;NULL es FALSE&quot;</span>;
+
+        <span class="hljs-keyword">if</span>(<span class="hljs-variable">$s</span> == <span class="hljs-literal">true</span>) <span class="hljs-keyword">echo</span> BR.<span class="hljs-string">&quot;Comparacion mal hecha&quot;</span>;
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="funciones">Funciones</h3>
+<pre><code class="language-php">
+    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">enlace</span>(<span class="hljs-params"><span class="hljs-variable">$url</span> = <span class="hljs-string">&quot;www.php.net&quot;</span></span>)</span>{
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;a href=&quot;&#x27;</span>.<span class="hljs-variable">$url</span>.<span class="hljs-string">&#x27;&quot;&gt;Pulsa aqui&lt;/a&gt;&lt;br&gt;&#x27;</span>;
+        }
+        <span class="hljs-title function_ invoke__">enlace</span>();
+            
+        <span class="hljs-title function_ invoke__">enlace</span>(<span class="hljs-string">&quot;www.google.es&quot;</span>);
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="_server">$_SERVER</h3>
+<pre><code class="language-php">
+    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$_SERVER</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$k</span>=&gt;<span class="hljs-variable">$v</span>){
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;<span class="hljs-subst">$k</span> .... <span class="hljs-subst">$v</span>&lt;br&gt;&quot;</span>;
+        }
+
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="capicua-v1">Capicua v1</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+            <span class="hljs-variable">$n</span>= <span class="hljs-number">5665</span>;
+            <span class="hljs-comment">/*Dado un numero $n comprobar si es capicua 
+              -mostrar por pantalla un menaje adecudado
+              ej: El numero 123 NO es capicua
+                  El numero 121 es capicua */</span>  
+                 
+            <span class="hljs-comment">//1. Extraer las cifras del numero e insertarlas en un array</span>
+            <span class="hljs-variable">$arrayNumero</span>=<span class="hljs-keyword">array</span>(); <span class="hljs-comment">//Creamos el array vacio</span>
+            
+            <span class="hljs-variable">$resto</span> = <span class="hljs-variable">$n</span>;
+
+            <span class="hljs-keyword">while</span>(<span class="hljs-variable">$resto</span> &gt; <span class="hljs-number">9</span>){
+                <span class="hljs-variable">$arrayNumero</span>[] = <span class="hljs-variable">$resto</span> % <span class="hljs-number">10</span>;
+                <span class="hljs-variable">$resto</span> = (<span class="hljs-variable">$resto</span> - (<span class="hljs-variable">$resto</span>%<span class="hljs-number">10</span>))/<span class="hljs-number">10</span>;
+            }
+
+            <span class="hljs-variable">$arrayNumero</span>[]=<span class="hljs-variable">$resto</span>;
+            <span class="hljs-comment">/*$n_temp = $n;
+            while($n_temp &gt; 1){
+   
+                $arrayNumero[] = $n_temp % 10;//El resto de dividir un numero entre 10 es el ultimo digito Ej: 5665 % 10 = 5
+
+                $n_temp /= 10; //Lo dividimos para extraer el ultimo digito y asignarle el nuevo valor a n
+                
+            }*/</span>
+            <span class="hljs-comment">//var_dump($arrayNumero);</span>
+            <span class="hljs-comment">//2. Comprobar que es capicua</span>
+            <span class="hljs-variable">$capicua</span>= <span class="hljs-literal">true</span>;
+            <span class="hljs-variable">$medio</span> = <span class="hljs-title function_ invoke__">count</span>(<span class="hljs-variable">$arrayNumero</span>)/<span class="hljs-number">2</span>;
+
+            <span class="hljs-keyword">for</span>(<span class="hljs-variable">$i</span>=<span class="hljs-number">0</span>;<span class="hljs-variable">$i</span>&lt;<span class="hljs-variable">$medio</span>;<span class="hljs-variable">$i</span>++){
+                <span class="hljs-keyword">if</span>(<span class="hljs-variable">$arrayNumero</span>[<span class="hljs-variable">$i</span>] != <span class="hljs-variable">$arrayNumero</span>[(<span class="hljs-title function_ invoke__">count</span>(<span class="hljs-variable">$arrayNumero</span>)-<span class="hljs-number">1</span>)-<span class="hljs-variable">$i</span>]){
+                    <span class="hljs-variable">$capicua</span> = <span class="hljs-literal">false</span>;
+                    <span class="hljs-keyword">break</span>;
+                }      
+            }
+            <span class="hljs-keyword">if</span>(<span class="hljs-variable">$capicua</span>){
+                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;El numero <span class="hljs-subst">$n</span> es capicúa&quot;</span>;
+            }<span class="hljs-keyword">else</span>{
+                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;El numero <span class="hljs-subst">$n</span> NO es capicúa&quot;</span>;
+            }
+
+            <span class="hljs-comment">/*
+            $mssg = &quot;El numero $n &quot;;
+            if($capicua) $mssg .= &quot;NO &quot;;
+            $mssg .= &quot;es capicúa&quot;;
+            echo $mssg;
+
+           
+            */</span>
+
+            <span class="hljs-comment">/*
+            $capicua= true;
+              En este bucle for recorremos el array desde el final hasta el inicio
+              para ello tenemos dos contadores long que se inicializa con la longitud del array menos 1
+              ya que nos devuelve el conteo de cuantas posiciones hay e i que se inicializa en 0 para 
+              ir del inicio del array e ir comparando inicio y final viendo si son distintos si no es asi
+              el bucle se rompe y si no i incrementara y long decrementara.
+            
+            for($long = count($arrayNumero)-1 ,$i=0;$long &gt;= 0;$i++,$long--){
+             
+
+                if($arrayNumero[$i] != $arrayNumero[$long]){
+                    $capicua=false;
+                    break;
+                }
+                
+            }
+
+            if($capicua){
+                echo &quot;El numero $n es capicúa&quot;;
+            }else{
+                echo &quot;El numero $n NO es capicúa&quot;;
+            }*/</span>
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="capicua-v2">Capicua v2</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+            <span class="hljs-variable">$n</span>= <span class="hljs-number">5665</span>;
+            <span class="hljs-comment">//$n_st = (string)$n; Casteo de entero a string</span>
+            <span class="hljs-comment">//1. Extraer las cifras del numero e insertarlas en un array</span>
+                <span class="hljs-variable">$arrayNumero</span>=<span class="hljs-keyword">array</span>(); <span class="hljs-comment">//Creamos el array vacio</span>
+            
+                <span class="hljs-variable">$s</span> = <span class="hljs-string">&quot;&quot;</span>;
+                <span class="hljs-variable">$resto</span> = <span class="hljs-variable">$n</span>;
+                <span class="hljs-keyword">while</span>(<span class="hljs-variable">$resto</span> &gt; <span class="hljs-number">9</span>){
+                    <span class="hljs-variable">$s</span> = <span class="hljs-variable">$resto</span> % <span class="hljs-number">10</span>;
+                    <span class="hljs-variable">$resto</span> = (<span class="hljs-variable">$resto</span> - (<span class="hljs-variable">$resto</span>%<span class="hljs-number">10</span>))/<span class="hljs-number">10</span>;
+                }
+            
+                <span class="hljs-variable">$s</span>.=<span class="hljs-variable">$resto</span>;
+            <span class="hljs-comment">//$n_st_invertido = strrev($n_st); //Funcion que invierte un string</span>
+            <span class="hljs-keyword">echo</span> <span class="hljs-variable">$s</span>;
+            <span class="hljs-comment">//Se comparan ambos strings si son diferentes añadira el &#x27;NO&#x27; al mssg</span>
+            <span class="hljs-variable">$mssg</span> = <span class="hljs-string">&quot;El numero <span class="hljs-subst">$n</span> &quot;</span>;
+            <span class="hljs-keyword">if</span>(<span class="hljs-variable">$n</span> != <span class="hljs-title function_ invoke__">strrev</span>(<span class="hljs-variable">$s</span>)) {
+                <span class="hljs-variable">$mssg</span> .= <span class="hljs-string">&quot;NO &quot;</span>;
+            }
+
+            <span class="hljs-variable">$mssg</span> .= <span class="hljs-string">&quot;es capicúa&quot;</span>;
+
+            <span class="hljs-keyword">echo</span> <span class="hljs-variable">$mssg</span>;
+
+            <span class="hljs-variable">$cap</span> = ( <span class="hljs-variable">$s</span> !=<span class="hljs-title function_ invoke__">strrev</span>(<span class="hljs-variable">$s</span>))?<span class="hljs-string">&quot;NO&quot;</span>:<span class="hljs-string">&quot; &quot;</span>;
+            <span class="hljs-title function_ invoke__">printf</span>(<span class="hljs-string">&quot;El numero %s %s es capicúa&quot;</span>,<span class="hljs-variable">$s</span>,<span class="hljs-variable">$cap</span>);
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="include-require-include_once-require_once">Include, require, include_once, require_once</h3>
+<p>Vista</p>
+<pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vista</span>(<span class="hljs-params"><span class="hljs-variable">$a</span></span>)</span>{
+        <span class="hljs-variable">$t</span> = <span class="hljs-string">&quot;&lt;table border=1&gt;\n&quot;</span>;<span class="hljs-comment">//Se puede usar echo &quot;&lt;table border=1&gt;\n&quot;; en vez de una variable</span>
+        <span class="hljs-variable">$t</span> .= <span class="hljs-string">&quot;&lt;caption&gt;Array en una tabla&lt;/caption&gt;\n&quot;</span>;+
+        <span class="hljs-comment">//Cabecera de la tabla    </span>
+        <span class="hljs-variable">$t</span> .=<span class="hljs-string">&quot;\t\t\t\t\t&lt;tr&gt; 
+              \t&lt;th&gt;Clave&lt;/th&gt;
+           \t&lt;th&gt;Tipo&lt;/th&gt;
+                        \t&lt;th&gt;Valor&lt;/th&gt;
+                    \t&lt;/tr&gt;\n&quot;</span>;
+                
+            <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$a</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$k</span> =&gt;<span class="hljs-variable">$v</span>){
+                    <span class="hljs-variable">$tipovar</span>=<span class="hljs-title function_ invoke__">gettype</span>(<span class="hljs-variable">$v</span>); <span class="hljs-comment">//Extraemos el tipo de la variable</span>
+                    <span class="hljs-comment">//Fila con las celdas con sus valores correspondientes por cada fila del array</span>
+                    <span class="hljs-variable">$t</span> .=<span class="hljs-string">&quot;\t\t\t\t\t&lt;tr&gt;
+                            &lt;td&gt;<span class="hljs-subst">$k</span>&lt;/td&gt;
+                            &lt;td&gt;<span class="hljs-subst">$tipovar</span>&lt;/td&gt;
+                            &lt;td&gt;<span class="hljs-subst">$v</span>&lt;/td&gt;
+                &lt;/tr&gt;\n&quot;</span>;
+                    
+            }
+            <span class="hljs-variable">$t</span> .= <span class="hljs-string">&quot;&lt;/table&gt;\n&quot;</span>;
+            <span class="hljs-keyword">return</span> <span class="hljs-variable">$t</span>;
+        }
+
+<span class="hljs-meta">?&gt;</span>
+</code></pre>
+<p>require</p>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+            <span class="hljs-keyword">require</span>(<span class="hljs-string">&quot;ejercicio1_v2_vista.php&quot;</span>);
+            
+            <span class="hljs-comment">/*Ejecicio : iterar el array $a visualizarlo en formato de tabla
+                En cada linea tendremos tres campos: clave, tipo y valor
+            */</span>
+            <span class="hljs-comment">//Datos</span>
+            
+            <span class="hljs-variable">$datos</span> = [
+                <span class="hljs-number">0</span> =&gt; <span class="hljs-string">&quot;false&quot;</span>,
+                <span class="hljs-number">1</span> =&gt; <span class="hljs-number">222</span>,
+                <span class="hljs-number">2</span> =&gt; <span class="hljs-literal">true</span>,
+                <span class="hljs-number">7</span> =&gt; <span class="hljs-number">666</span>,
+                <span class="hljs-string">&quot;hola&quot;</span> =&gt; <span class="hljs-string">&quot;que tal&quot;</span>
+            ];
+            <span class="hljs-variable">$a</span>[] =<span class="hljs-string">&quot;otro&quot;</span>;
+
+            <span class="hljs-comment">//Vista </span>
+
+            <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">vista</span>(<span class="hljs-variable">$datos</span>);
+            <span class="hljs-keyword">unset</span>(<span class="hljs-variable">$a</span>[<span class="hljs-number">1</span>]); <span class="hljs-comment">//No hay persistencia de datos porque aunque se borre al iniciar de nuevo el programa el array seguira teniendo la pos 1</span>
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<p><a href="#">Indice</a></p>
+<h2 id="arrays">Arrays</h2>
+<h3 id="reindexar">Reindexar</h3>
+<pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+    <span class="hljs-variable">$a</span> = <span class="hljs-keyword">array</span>(<span class="hljs-number">1</span> =&gt; <span class="hljs-string">&#x27;uno&#x27;</span>, <span class="hljs-number">2</span> =&gt; <span class="hljs-string">&#x27;dos&#x27;</span>, <span class="hljs-number">3</span> =&gt; <span class="hljs-string">&#x27;tres&#x27;</span>);
+    <span class="hljs-keyword">unset</span>(<span class="hljs-variable">$a</span>[<span class="hljs-number">2</span>]);
+    <span class="hljs-comment">/* producirá un array que se haya definido como
+    $a = array(1 =&gt; &#x27;uno&#x27;, 3 =&gt; &#x27;tres&#x27;);
+    y NO $a = array(1 =&gt; &#x27;uno&#x27;, 2 =&gt;&#x27;tres&#x27;); */</span>
+    <span class="hljs-variable">$b</span> = <span class="hljs-title function_ invoke__">array_values</span>(<span class="hljs-variable">$a</span>);
+    <span class="hljs-comment">// Ahora $b es array(0 =&gt; &#x27;uno&#x27;, 1 =&gt;&#x27;tres&#x27;)</span>
+    <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$a</span>);
+    <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$b</span>);
+<span class="hljs-meta">?&gt;</span> 
+</code></pre>
+<h3 id="añadir-elementos">Añadir elementos</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span> 
+        <span class="hljs-comment">/* 1. Dados los dos siguientes arrays,
+            $a = array(&quot;manzana&quot;, &quot;naranja”);
+            $b = array(1 =&gt; &quot;manzana&quot;, &quot;0&quot; =&gt; &quot;naranja&quot;);
+            Añadir dos nuevos elementos a ambos arrays: uno con el valor uva y otro con el valor mandarina.
+            Mostrar los nuevos resultados. 
+        */</span>
+
+        <span class="hljs-variable">$a</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;manzana&quot;</span>, <span class="hljs-string">&quot;naraja&quot;</span>); 
+        <span class="hljs-variable">$b</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;1&quot;</span>=&gt;<span class="hljs-string">&quot;manzana&quot;</span>, <span class="hljs-string">&quot;0&quot;</span>=&gt;<span class="hljs-string">&quot;naranja&quot;</span>);
+
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Antes de añadir&lt;br&gt;&quot;</span>;
+        
+        <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$a</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+        <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$b</span>);
+
+        <span class="hljs-variable">$a</span>[]=<span class="hljs-string">&quot;uva&quot;</span>;
+        <span class="hljs-variable">$b</span>[]=<span class="hljs-string">&quot;uva&quot;</span>;
+
+        <span class="hljs-variable">$a</span>[]=<span class="hljs-string">&quot;mandarina&quot;</span>;
+        <span class="hljs-variable">$b</span>[]=<span class="hljs-string">&quot;mandarina&quot;</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;Despues de añadir&lt;br&gt;&quot;</span>;
+        <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$a</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+        <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$b</span>);
+
+        <span class="hljs-comment">/*
+        Antes de añadir
+        array(2) { [0]=&gt; string(7) &quot;manzana&quot; [1]=&gt; string(6) &quot;naraja&quot; }
+        array(2) { [1]=&gt; string(7) &quot;manzana&quot; [0]=&gt; string(7) &quot;naranja&quot; }
+        Despues de añadir
+        array(4) { [0]=&gt; string(7) &quot;manzana&quot; [1]=&gt; string(6) &quot;naraja&quot; [2]=&gt; string(3) &quot;uva&quot; [3]=&gt; string(9) &quot;mandarina&quot; }
+        array(4) { [1]=&gt; string(7) &quot;manzana&quot; [0]=&gt; string(7) &quot;naranja&quot; [2]=&gt; string(3) &quot;uva&quot; [3]=&gt; string(9) &quot;mandarina&quot; }
+
+        -En conclusion los arrays en estos casos la clave no es la siguiente a la ultima si no la cantidad de elementos + 1
+        eso en el caso de que no introduzcamos una personalizada a la hora de añadir*/</span>
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="array_keys">array_keys</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span> 
+        <span class="hljs-comment">/* 2. Guardar las claves del array $b en otro array. Nota: array_keys.
+        */</span>
+        <span class="hljs-variable">$a</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;manzana&quot;</span>, <span class="hljs-string">&quot;naraja&quot;</span>); 
+        <span class="hljs-variable">$b</span> = <span class="hljs-keyword">array</span>(<span class="hljs-number">1</span>=&gt;<span class="hljs-string">&quot;manzana&quot;</span>, <span class="hljs-string">&quot;0&quot;</span>=&gt;<span class="hljs-string">&quot;naranja&quot;</span>);
+
+        <span class="hljs-variable">$arrayClavesB</span> = <span class="hljs-title function_ invoke__">array_keys</span>(<span class="hljs-variable">$b</span>);
+        <span class="hljs-variable">$arrayClavesA</span> = <span class="hljs-title function_ invoke__">array_keys</span>(<span class="hljs-variable">$a</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Antes de añadir&lt;br&gt;&quot;</span>;
+        <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$b</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+        <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$arrayClavesB</span>);
+
+        <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$a</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+        <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$arrayClavesA</span>);
+
+        <span class="hljs-variable">$a</span>[]=<span class="hljs-string">&quot;uva&quot;</span>;
+        <span class="hljs-variable">$b</span>[]=<span class="hljs-string">&quot;uva&quot;</span>;
+
+        <span class="hljs-variable">$a</span>[]=<span class="hljs-string">&quot;mandarina&quot;</span>;
+        <span class="hljs-variable">$b</span>[]=<span class="hljs-string">&quot;mandarina&quot;</span>;
+
+        <span class="hljs-variable">$arrayClavesB</span> = <span class="hljs-title function_ invoke__">array_keys</span>(<span class="hljs-variable">$b</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;Despues de añadir&lt;br&gt;&quot;</span>;
+        <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$b</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+        <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$arrayClavesB</span>);
+        <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$a</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+        <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$arrayClavesA</span>);
+
+        <span class="hljs-comment">/*
+        Antes de añadir
+        array(2) { [1]=&gt; string(7) &quot;manzana&quot; [0]=&gt; string(7) &quot;naranja&quot; }
+        array(2) { [0]=&gt; int(1) [1]=&gt; int(0) }
+        Despues de añadir
+        array(4) { [1]=&gt; string(7) &quot;manzana&quot; [0]=&gt; string(7) &quot;naranja&quot; [2]=&gt; string(3) &quot;uva&quot; [3]=&gt; string(9) &quot;mandarina&quot; }
+        array(4) { [0]=&gt; int(1) [1]=&gt; int(0) [2]=&gt; int(2) [3]=&gt; int(3) }
+
+        -En conclusion array_keys crea otro array con los valores puede ser util ya que como las claves son personalizas 
+        para conocerlas, no se actualiza solo cada vez de se añade un nuevo elemento al array $b hay que ejecutar el metodo
+        */</span>
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="ordenacion">Ordenacion</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span> 
+        <span class="hljs-comment">/* 3. Ordenar:
+            a. descendentemente por clave el array $b anterior
+            b. ascendentemente por valor el array $b anterior. 
+
+        */</span>
+
+        <span class="hljs-variable">$b</span> = <span class="hljs-keyword">array</span>(<span class="hljs-number">1</span>=&gt;<span class="hljs-string">&quot;manzana&quot;</span>, <span class="hljs-string">&quot;0&quot;</span>=&gt;<span class="hljs-string">&quot;naranja&quot;</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Antes de ordernar descendentemente por clave &lt;br&gt;&quot;</span>;
+        <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$b</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+        <span class="hljs-title function_ invoke__">arsort</span>(<span class="hljs-variable">$b</span>);
+
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Despues de ordernar descendentemente por clave &lt;br&gt;&quot;</span>;
+        <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$b</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Antes de ordernar ascendentemente por valor &lt;br&gt;&quot;</span>;
+        <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$b</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+        <span class="hljs-title function_ invoke__">arsort</span>(<span class="hljs-variable">$b</span>);
+
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Despues de ordernar ascendentemente por valor &lt;br&gt;&quot;</span>;
+        <span class="hljs-title function_ invoke__">var_dump</span>(<span class="hljs-variable">$b</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+        <span class="hljs-comment">/*
+        Antes de ordernar descendentemente por clave
+        array(2) { [&quot;b&quot;]=&gt; string(7) &quot;manzana&quot; [&quot;a&quot;]=&gt; string(7) &quot;naranja&quot; }
+        Despues de ordernar descendentemente por clave
+        array(2) { [&quot;a&quot;]=&gt; string(7) &quot;naranja&quot; [&quot;b&quot;]=&gt; string(7) &quot;manzana&quot; }
+        Antes de ordernar ascendentemente por valor
+        array(2) { [&quot;a&quot;]=&gt; string(7) &quot;naranja&quot; [&quot;b&quot;]=&gt; string(7) &quot;manzana&quot; }
+        Despues de ordernar ascendentemente por valor
+        array(2) { [&quot;a&quot;]=&gt; string(7) &quot;naranja&quot; [&quot;b&quot;]=&gt; string(7) &quot;manzana&quot; }
+
+        -En conclusion la ordenacion indendientemente se ordena alfabeticamente desc o asc
+        */</span>
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="ordenacion-definida-por-el-usario">Ordenacion definida por el usario</h3>
+<pre><code class="language-php">
+</code></pre>
+<h3 id="array_values">array_values</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span> 
+        <span class="hljs-comment">/* 4. A partir de $b obtener otro array con los mismos valores, 
+        pero con claves numéricas empezando desde 0. Nota: array_values.*/</span>
+
+        <span class="hljs-variable">$b</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;1&quot;</span>=&gt;<span class="hljs-string">&quot;manzana&quot;</span>, <span class="hljs-string">&quot;0&quot;</span>=&gt;<span class="hljs-string">&quot;naranja&quot;</span>);
+        
+        <span class="hljs-variable">$arrayValoresB</span> = <span class="hljs-title function_ invoke__">array_values</span>(<span class="hljs-variable">$b</span>);
+        <span class="hljs-title function_ invoke__">asort</span>(<span class="hljs-variable">$arrayValoresB</span>);
+
+        <span class="hljs-title function_ invoke__">print_r</span>(<span class="hljs-variable">$arrayValoresB</span>);
+
+        <span class="hljs-comment">//Array ( [0] =&gt; manzana [1] =&gt; naranja )</span>
+        <span class="hljs-comment">//array_values similar a array_keys pero con los valores    </span>
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="explode">Explode</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span> 
+        <span class="hljs-comment">/* 5. Dada la cadena de caracteres “Desarrollo Web en Entorno Servidor con PHP”, construir un array con cada palabra de la cadena anterior. */</span>
+
+        <span class="hljs-variable">$cadena</span> =<span class="hljs-string">&quot;Desarrollo Web en Entorno Servidor con PHP&quot;</span>;
+        <span class="hljs-variable">$array</span> = <span class="hljs-title function_ invoke__">explode</span>(<span class="hljs-string">&quot; &quot;</span>,<span class="hljs-variable">$cadena</span>);
+        <span class="hljs-title function_ invoke__">print_r</span>(<span class="hljs-variable">$array</span>);
+        <span class="hljs-comment">/*Array ( [0] =&gt; Desarrollo [1] =&gt; Web [2] =&gt; en [3] =&gt; Entorno [4] =&gt; Servidor [5] =&gt; con [6] =&gt; PHP )
+        -En conclusion explode divide la cadena detectando el separador que se introduce como primer argumento,y generando un array en el que cada palabra esta en un hueco  */</span>  
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="implode">Implode</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span> 
+        <span class="hljs-comment">/* 6. Dado el array obtenido en el ejercicio anterior, obtener una cadena con sus elementos, pero separados por el carácter ‘-‘. Debe salir “Desarrollo-Web-en Entorno-Servidor-con-PHP”.  */</span>
+
+        <span class="hljs-variable">$cadena</span> =<span class="hljs-string">&quot;Desarrollo Web en Entorno Servidor con PHP&quot;</span>;
+        <span class="hljs-variable">$array</span> = <span class="hljs-title function_ invoke__">explode</span>(<span class="hljs-string">&quot; &quot;</span>,<span class="hljs-variable">$cadena</span>);
+        <span class="hljs-title function_ invoke__">print_r</span>(<span class="hljs-variable">$array</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+        <span class="hljs-variable">$cadenaNueva</span> = <span class="hljs-title function_ invoke__">implode</span>(<span class="hljs-string">&quot;-&quot;</span>,<span class="hljs-variable">$array</span>);
+        <span class="hljs-title function_ invoke__">printf</span>(<span class="hljs-string">&quot;La nueva cadena es: %s&quot;</span>,<span class="hljs-variable">$cadenaNueva</span>);
+        <span class="hljs-comment">/*Array ( [0] =&gt; Desarrollo [1] =&gt; Web [2] =&gt; en [3] =&gt; Entorno [4] =&gt; Servidor [5] =&gt; con [6] =&gt; PHP )
+        La nueva cadena es: Desarrollo-Web-en-Entorno-Servidor-con-PHP
+        -En conclusion implode funcina al contrario que explode, 
+        une las palabras de un array con el separador introducido como primer argumento */</span>  
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="str_replace">Str_replace</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span> 
+        <span class="hljs-comment">/* 7. Reemplazar el valor PHP de la cadena anterior por el valor JSP.   */</span>
+
+        <span class="hljs-variable">$cadena</span> =<span class="hljs-string">&quot;Desarrollo Web en Entorno Servidor con PHP&quot;</span>;
+        <span class="hljs-variable">$array</span> = <span class="hljs-title function_ invoke__">explode</span>(<span class="hljs-string">&quot; &quot;</span>,<span class="hljs-variable">$cadena</span>);
+        <span class="hljs-title function_ invoke__">print_r</span>(<span class="hljs-variable">$array</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+        <span class="hljs-variable">$cadenaNueva</span> = <span class="hljs-title function_ invoke__">implode</span>(<span class="hljs-string">&quot;-&quot;</span>,<span class="hljs-variable">$array</span>);
+        <span class="hljs-title function_ invoke__">printf</span>(<span class="hljs-string">&quot;La nueva cadena es: %s&quot;</span>,<span class="hljs-variable">$cadenaNueva</span>);
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;
+        <span class="hljs-variable">$cadenaJSP</span>= <span class="hljs-title function_ invoke__">str_replace</span>(<span class="hljs-string">&quot;PHP&quot;</span>,<span class="hljs-string">&quot;JSP&quot;</span>,<span class="hljs-variable">$cadenaNueva</span>);
+
+        <span class="hljs-title function_ invoke__">printf</span>(<span class="hljs-string">&quot;La nueva cadena con JSP es: %s&quot;</span>,<span class="hljs-variable">$cadenaJSP</span>);
+        <span class="hljs-comment">/*Array ( [0] =&gt; Desarrollo [1] =&gt; Web [2] =&gt; en [3] =&gt; Entorno [4] =&gt; Servidor [5] =&gt; con [6] =&gt; PHP )
+        La nueva cadena es: Desarrollo-Web-en-Entorno-Servidor-con-PHP
+        La nueva cadena con JSP es: Desarrollo-Web-en-Entorno-Servidor-con-JSP
+        -En conclusion str_replace busca el fragmento a cambiar y la remplaza por el nuevo*/</span>  
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="md5">md5</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span> 
+        <span class="hljs-comment">/* $credenciales = array(
+            &#x27;ana&#x27; =&gt; array(&#x27;nombre&#x27; =&gt; &#x27;Ana&#x27;, &#x27;apellido&#x27; =&gt; &#x27;García&#x27;, &#x27;clave&#x27; =&gt;
+            &#x27;a4a97ffc170ec7ab32b85b2129c69c50&#x27;),
+            &#x27;marga&#x27; =&gt; array(&#x27;nombre&#x27; =&gt; &#x27;Margarita&#x27;, &#x27;apellido&#x27; =&gt; &#x27;Ayuso&#x27;, &#x27;clave&#x27; =&gt;
+            &#x27;35559e8b5732fbd5029bef54aeab7a21&#x27;),
+            &#x27;pepe&#x27; =&gt; array(&#x27;nombre&#x27; =&gt; &#x27;Jose&#x27;, &#x27;apellido&#x27; =&gt; &#x27;González&#x27;, &#x27;clave&#x27; =&gt;
+            &#x27;10dea63031376352d413a8e530654b8b&#x27;),
+            &#x27;luis&#x27; =&gt; array(&#x27;nombre&#x27; =&gt; &#x27;Luis&#x27;, &#x27;apellido&#x27; =&gt; &#x27;Merino&#x27;, &#x27;clave&#x27; =&gt;
+            &#x27;C707dce7b5a990e349c873268cf5a968&#x27;)
+            );
+            Supongamos un formulario de autenticación donde un usuario introduce como contraseña el valor
+            ‘clave2’ y la aplicación autenticó al usuario correctamente. Indicar el nombre y apellido del
+            usuario que introdujo tal contraseña.   */</span>
+
+            <span class="hljs-variable">$credenciales</span> = <span class="hljs-keyword">array</span>(
+                <span class="hljs-string">&#x27;ana&#x27;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;nombre&#x27;</span> =&gt; <span class="hljs-string">&#x27;Ana&#x27;</span>, <span class="hljs-string">&#x27;apellido&#x27;</span> =&gt; <span class="hljs-string">&#x27;García&#x27;</span>, <span class="hljs-string">&#x27;clave&#x27;</span> =&gt;
+                <span class="hljs-string">&#x27;a4a97ffc170ec7ab32b85b2129c69c50&#x27;</span>),
+                <span class="hljs-string">&#x27;marga&#x27;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;nombre&#x27;</span> =&gt; <span class="hljs-string">&#x27;Margarita&#x27;</span>, <span class="hljs-string">&#x27;apellido&#x27;</span> =&gt; <span class="hljs-string">&#x27;Ayuso&#x27;</span>, <span class="hljs-string">&#x27;clave&#x27;</span> =&gt;
+                <span class="hljs-string">&#x27;35559e8b5732fbd5029bef54aeab7a21&#x27;</span>),
+                <span class="hljs-string">&#x27;pepe&#x27;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;nombre&#x27;</span> =&gt; <span class="hljs-string">&#x27;Jose&#x27;</span>, <span class="hljs-string">&#x27;apellido&#x27;</span> =&gt; <span class="hljs-string">&#x27;González&#x27;</span>, <span class="hljs-string">&#x27;clave&#x27;</span> =&gt;
+                <span class="hljs-string">&#x27;10dea63031376352d413a8e530654b8b&#x27;</span>),
+                <span class="hljs-string">&#x27;luis&#x27;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;nombre&#x27;</span> =&gt; <span class="hljs-string">&#x27;Luis&#x27;</span>, <span class="hljs-string">&#x27;apellido&#x27;</span> =&gt; <span class="hljs-string">&#x27;Merino&#x27;</span>, <span class="hljs-string">&#x27;clave&#x27;</span> =&gt;
+                <span class="hljs-string">&#x27;C707dce7b5a990e349c873268cf5a968&#x27;</span>)
+                );
+                <span class="hljs-variable">$usario</span> =<span class="hljs-string">&quot;&quot;</span>;
+
+                <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$credenciales</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$k</span>=&gt;<span class="hljs-variable">$v</span>){
+                    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;clave&#x27;</span>] === <span class="hljs-title function_ invoke__">md5</span>(<span class="hljs-string">&quot;clave2&quot;</span>)){
+                        <span class="hljs-title function_ invoke__">printf</span>(<span class="hljs-string">&quot;El usuario que introdujo la contraseña es: %s %s&quot;</span>,<span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;nombre&#x27;</span>],<span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;apellido&#x27;</span>]);
+                        <span class="hljs-keyword">break</span>;
+                    }
+                }
+                <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">md5</span>(<span class="hljs-string">&quot;C707dce7b5a990e349c873268cf5a968&quot;</span>);
+                <span class="hljs-comment">/*$usario=array_filter($credenciales, function($e){
+                    return $e[&#x27;clave&#x27;] == md5(&quot;clave2&quot;);
+                });
+
+                //print_r($usario);
+                printf(&quot;El usuario que introdujo la contraseña es: %s %s&quot;,$usario[array_key_first($usario)][&#x27;nombre&#x27;],$usario[array_key_first($usario)][&#x27;apellido&#x27;]);*/</span>
+                
+                <span class="hljs-comment">/*-En conclusion se puede hacer con dos formas, con un bucle recorriendolo,$v sera el array de cada usuario con lo cual comprobamos aquel cuya clave sea &#x27;clave2&#x27; en md5
+                    y lo imprimimos, la otra forma es array_filter que el segundo argumento es una funcion que actua como filtro de lo que buscamos es decir return $e[&#x27;clave&#x27;] == md5(&quot;clave2&quot;);
+                    
+                */</span>  
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="array_multisort">array_multisort</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span> 
+        <span class="hljs-comment">/* $credenciales = array(
+            &#x27;ana&#x27; =&gt; array(&#x27;nombre&#x27; =&gt; &#x27;Ana&#x27;, &#x27;apellido&#x27; =&gt; &#x27;García&#x27;, &#x27;clave&#x27; =&gt;
+            &#x27;a4a97ffc170ec7ab32b85b2129c69c50&#x27;),
+            &#x27;marga&#x27; =&gt; array(&#x27;nombre&#x27; =&gt; &#x27;Margarita&#x27;, &#x27;apellido&#x27; =&gt; &#x27;Ayuso&#x27;, &#x27;clave&#x27; =&gt;
+            &#x27;35559e8b5732fbd5029bef54aeab7a21&#x27;),
+            &#x27;pepe&#x27; =&gt; array(&#x27;nombre&#x27; =&gt; &#x27;Jose&#x27;, &#x27;apellido&#x27; =&gt; &#x27;González&#x27;, &#x27;clave&#x27; =&gt;
+            &#x27;10dea63031376352d413a8e530654b8b&#x27;),
+            &#x27;luis&#x27; =&gt; array(&#x27;nombre&#x27; =&gt; &#x27;Luis&#x27;, &#x27;apellido&#x27; =&gt; &#x27;Merino&#x27;, &#x27;clave&#x27; =&gt;
+            &#x27;C707dce7b5a990e349c873268cf5a968&#x27;)
+            );
+            Supongamos un formulario de autenticación donde un usuario introduce como contraseña el valor ‘clave2’ y la aplicación autenticó al usuario correctamente. Indicar el nombre y apellido del usuario que introdujo tal contraseña.   */</span>
+            <span class="hljs-variable">$credenciales</span> = <span class="hljs-keyword">array</span>(
+                <span class="hljs-string">&#x27;ana&#x27;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;nombre&#x27;</span> =&gt; <span class="hljs-string">&#x27;Ana&#x27;</span>, <span class="hljs-string">&#x27;apellido&#x27;</span> =&gt; <span class="hljs-string">&#x27;García&#x27;</span>, <span class="hljs-string">&#x27;clave&#x27;</span> =&gt;
+                <span class="hljs-string">&#x27;a4a97ffc170ec7ab32b85b2129c69c50&#x27;</span>),
+                <span class="hljs-string">&#x27;marga&#x27;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;nombre&#x27;</span> =&gt; <span class="hljs-string">&#x27;Margarita&#x27;</span>, <span class="hljs-string">&#x27;apellido&#x27;</span> =&gt; <span class="hljs-string">&#x27;Ayuso&#x27;</span>, <span class="hljs-string">&#x27;clave&#x27;</span> =&gt;
+                <span class="hljs-string">&#x27;35559e8b5732fbd5029bef54aeab7a21&#x27;</span>),
+                <span class="hljs-string">&#x27;pepe&#x27;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;nombre&#x27;</span> =&gt; <span class="hljs-string">&#x27;Jose&#x27;</span>, <span class="hljs-string">&#x27;apellido&#x27;</span> =&gt; <span class="hljs-string">&#x27;González&#x27;</span>, <span class="hljs-string">&#x27;clave&#x27;</span> =&gt;
+                <span class="hljs-string">&#x27;10dea63031376352d413a8e530654b8b&#x27;</span>),
+                <span class="hljs-string">&#x27;luis&#x27;</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;nombre&#x27;</span> =&gt; <span class="hljs-string">&#x27;Luis&#x27;</span>, <span class="hljs-string">&#x27;apellido&#x27;</span> =&gt; <span class="hljs-string">&#x27;Merino&#x27;</span>, <span class="hljs-string">&#x27;clave&#x27;</span> =&gt;
+                <span class="hljs-string">&#x27;C707dce7b5a990e349c873268cf5a968&#x27;</span>)
+                );
+
+            <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">crear_tabla</span>(<span class="hljs-params"><span class="hljs-variable">$a</span>,<span class="hljs-variable">$ord</span></span>)</span>{
+                <span class="hljs-variable">$t</span>=<span class="hljs-string">&quot;&lt;table border=\&quot;1\&quot;&gt;&quot;</span>;
+                <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;caption&gt;&quot;</span>.<span class="hljs-variable">$ord</span>.<span class="hljs-string">&quot;&lt;/caption&gt;&quot;</span>;
+                <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;tr&gt;&quot;</span>;
+                <span class="hljs-variable">$keys</span>= <span class="hljs-title function_ invoke__">array_keys</span>(<span class="hljs-variable">$a</span>[<span class="hljs-title function_ invoke__">array_key_first</span>(<span class="hljs-variable">$a</span>)]);
+                <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$keys</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$k</span>){               
+                        <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;th&gt;&quot;</span>.<span class="hljs-variable">$k</span>.<span class="hljs-string">&quot;&lt;/th&gt;&quot;</span>;         
+                }
+                <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;/tr&gt;&quot;</span>;
+                <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$a</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$k</span>=&gt;<span class="hljs-variable">$v</span>){
+                    <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;tr&gt;&quot;</span>;
+                    <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;td&gt;&quot;</span>.<span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;nombre&#x27;</span>].<span class="hljs-string">&quot;&lt;/td&gt;&quot;</span>;
+                    <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;td&gt;&quot;</span>.<span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;apellido&#x27;</span>].<span class="hljs-string">&quot;&lt;/td&gt;&quot;</span>;
+                    <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;td&gt;&quot;</span>.<span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;clave&#x27;</span>].<span class="hljs-string">&quot;&lt;/td&gt;&quot;</span>;
+                    <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;/tr&gt;&quot;</span>;
+                }
+                <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;/table&gt;&lt;br&gt;&quot;</span>;
+                <span class="hljs-keyword">return</span> <span class="hljs-variable">$t</span>;
+            }  
+
+            <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ord_apellido</span>(<span class="hljs-params"><span class="hljs-variable">$a</span></span>)</span>{
+                <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$a</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$k</span> =&gt; <span class="hljs-variable">$v</span>) {
+                    <span class="hljs-variable">$apellido</span>[] = <span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;apellido&#x27;</span>];
+                    <span class="hljs-variable">$nombre</span>[] = <span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;nombre&#x27;</span>];
+                }
+                <span class="hljs-title function_ invoke__">array_multisort</span>(<span class="hljs-variable">$apellido</span>, SORT_ASC,<span class="hljs-variable">$nombre</span>, SORT_ASC,<span class="hljs-variable">$a</span>);  
+                <span class="hljs-keyword">return</span> <span class="hljs-variable">$a</span>;
+            }    
+            
+            <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">crear_tabla</span>(<span class="hljs-variable">$credenciales</span>,<span class="hljs-string">&quot;Sin ordenar&quot;</span>);
+            <span class="hljs-variable">$credenciales</span>=<span class="hljs-title function_ invoke__">ord_apellido</span>(<span class="hljs-variable">$credenciales</span>);
+            <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">crear_tabla</span>(<span class="hljs-variable">$credenciales</span>,<span class="hljs-string">&quot;Ordenado por apellido&quot;</span>);
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<p><a href="#">Indice</a></p>
+<h2 id="formularios">Formularios</h2>
+<h3 id="post-a-otro-archivo">Post a otro archivo</h3>
+<p>HTML</p>
+<pre><code class="language-html">    <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;text/html; charset=ISO-8859-1&quot;</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;content-type&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Ejercicio 5.2<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">post</span> <span class="hljs-attr">action</span>=<span class="hljs-string">ejem2.php</span>&gt;</span>
+                Introduzca la cantidad: <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">text</span> <span class="hljs-attr">name</span>=<span class="hljs-string">cantidad</span> <span class="hljs-attr">size</span>=<span class="hljs-string">10</span>&gt;</span>
+                
+                Seleccione el tipo de conversion:<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">conv</span> <span class="hljs-attr">value</span>=<span class="hljs-string">euro</span> <span class="hljs-attr">checked</span>&gt;</span>Euros<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">conv</span> <span class="hljs-attr">value</span>=<span class="hljs-string">dolares</span>&gt;</span>dolares<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+                Introduzca la cantidad de euros: 
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;euros&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;10&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;ok&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;enviar&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p>PHP</p>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-variable">$euros</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;euros&#x27;</span>];
+        <span class="hljs-variable">$pesetas</span> = <span class="hljs-variable">$euros</span> * <span class="hljs-number">166.386</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Son <span class="hljs-subst">$pesetas</span> pesetas&lt;/h1&gt;&quot;</span>;
+            
+        <span class="hljs-variable">$conv</span>=<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;conv&#x27;</span>];
+        <span class="hljs-variable">$cantidad</span>=<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;cantidad&#x27;</span>];
+        <span class="hljs-variable">$valores</span>=[<span class="hljs-string">&quot;euro&quot;</span>=&gt;<span class="hljs-number">166.386</span>,<span class="hljs-string">&quot;dolares&quot;</span>=&gt;<span class="hljs-number">180.386</span>];
+        <span class="hljs-variable">$pesetas</span>=<span class="hljs-variable">$cantidad</span>/<span class="hljs-variable">$valores</span>[<span class="hljs-variable">$conv</span>];
+
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Son <span class="hljs-subst">$pesetas</span> <span class="hljs-subst">$conv</span>&lt;/h1&gt;&quot;</span>;
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<p><a href="#">Indice</a></p>
+<h3 id="mvc">MVC</h3>
+<p>Ejer1
+Datos</p>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-title function_ invoke__">DEFINE</span>(<span class="hljs-string">&quot;CAMPOSFORM&quot;</span>,<span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;nom&quot;</span>=&gt;[<span class="hljs-string">&quot;patron&quot;</span>=&gt;<span class="hljs-string">&quot;/.*/&quot;</span>,<span class="hljs-string">&quot;size&quot;</span>=&gt;<span class="hljs-string">&quot;60&quot;</span>,<span class="hljs-string">&quot;pal&quot;</span>=&gt;<span class="hljs-string">&quot;Nombre&quot;</span>,<span class="hljs-string">&quot;patronUser&quot;</span>=&gt;<span class="hljs-string">&quot;Cualquier caracter alfanumerico&quot;</span>],
+        <span class="hljs-string">&quot;ape&quot;</span>=&gt; [<span class="hljs-string">&quot;patron&quot;</span>=&gt;<span class="hljs-string">&quot;/.*/&quot;</span>,<span class="hljs-string">&quot;size&quot;</span>=&gt;<span class="hljs-string">&quot;30&quot;</span>,<span class="hljs-string">&quot;pal&quot;</span>=&gt;<span class="hljs-string">&quot;Apellidos&quot;</span>,<span class="hljs-string">&quot;patronUser&quot;</span>=&gt;<span class="hljs-string">&quot;Cualquier caracter alfanumerico&quot;</span>],
+        <span class="hljs-string">&quot;DNI&quot;</span>=&gt; [<span class="hljs-string">&quot;patron&quot;</span>=&gt;<span class="hljs-string">&quot;/[0-9]{8}[TRWAGMYFPDXBNJZSQVHJCKE]/&quot;</span>,<span class="hljs-string">&quot;size&quot;</span>=&gt;<span class="hljs-string">&quot;9&quot;</span>,<span class="hljs-string">&quot;pal&quot;</span>=&gt;<span class="hljs-string">&quot;DNI&quot;</span>,<span class="hljs-string">&quot;patronUser&quot;</span>=&gt;<span class="hljs-string">&quot;8 numeros y una letra&quot;</span>],
+        <span class="hljs-string">&quot;mail&quot;</span>=&gt; [<span class="hljs-string">&quot;patron&quot;</span>=&gt;<span class="hljs-string">&quot;/^[a-zA-Z0-9.]+@educa\.madrid\.org$/&quot;</span>,<span class="hljs-string">&quot;size&quot;</span>=&gt;<span class="hljs-string">&quot;40&quot;</span>,<span class="hljs-string">&quot;pal&quot;</span>=&gt;<span class="hljs-string">&quot;Correo Electronico&quot;</span>,<span class="hljs-string">&quot;patronUser&quot;</span>=&gt;<span class="hljs-string">&quot;debe ser con el dominio de educamadrid&quot;</span>],
+        <span class="hljs-string">&quot;fecNac&quot;</span>=&gt; [<span class="hljs-string">&quot;patron&quot;</span>=&gt;<span class="hljs-string">&quot;/[0-9]{2}-[0-9]{2}-[0-9]{4}/&quot;</span>,<span class="hljs-string">&quot;size&quot;</span>=&gt;<span class="hljs-string">&quot;10&quot;</span>,<span class="hljs-string">&quot;pal&quot;</span>=&gt;<span class="hljs-string">&quot;Fecha Nacimiento&quot;</span>,<span class="hljs-string">&quot;patronUser&quot;</span>=&gt;<span class="hljs-string">&quot;dd-MM-yyyy&quot;</span>],
+        <span class="hljs-string">&quot;TelFijo&quot;</span>=&gt; [<span class="hljs-string">&quot;patron&quot;</span>=&gt;<span class="hljs-string">&quot;/[0-9]{9}/&quot;</span>,<span class="hljs-string">&quot;size&quot;</span>=&gt;<span class="hljs-string">&quot;9&quot;</span>,<span class="hljs-string">&quot;pal&quot;</span>=&gt;<span class="hljs-string">&quot;Telefono Fijo&quot;</span>,<span class="hljs-string">&quot;patronUser&quot;</span>=&gt;<span class="hljs-string">&quot;9 digitos&quot;</span>],
+        <span class="hljs-string">&quot;TelMovil&quot;</span>=&gt; [<span class="hljs-string">&quot;patron&quot;</span>=&gt;<span class="hljs-string">&quot;/(\+34)[0-9]{9}/&quot;</span>,<span class="hljs-string">&quot;size&quot;</span>=&gt;<span class="hljs-string">&quot;10&quot;</span>,<span class="hljs-string">&quot;pal&quot;</span>=&gt;<span class="hljs-string">&quot;Telefono Movil&quot;</span>,<span class="hljs-string">&quot;patronUser&quot;</span>=&gt;<span class="hljs-string">&quot;(+34)9 digitos&quot;</span>],
+        <span class="hljs-string">&quot;pwd&quot;</span>=&gt; [<span class="hljs-string">&quot;patron&quot;</span>=&gt;<span class="hljs-string">&quot;/^(?=.*[a-z])(?=.*[^a-zA-Z0-9])[^0-9]{8,}$/&quot;</span>,<span class="hljs-string">&quot;size&quot;</span>=&gt;<span class="hljs-string">&quot;9&quot;</span>,<span class="hljs-string">&quot;pal&quot;</span>=&gt;<span class="hljs-string">&quot;Contraseña&quot;</span>,<span class="hljs-string">&quot;patronUser&quot;</span>=&gt;<span class="hljs-string">&quot;8 caracteres alfanumericos, al menos una minuscula y un caracter especial&quot;</span>]));
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<p>Vista</p>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formulario</span>(<span class="hljs-params"></span>)</span>{
+            <span class="hljs-variable">$f</span>=<span class="hljs-string">&quot;&lt;form method=\&quot;post\&quot; action=&quot;</span>.<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;PHP_SELF&#x27;</span>].<span class="hljs-string">&quot;&gt;\n&quot;</span>;
+            <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&lt;table&gt;&quot;</span>;
+            <span class="hljs-keyword">foreach</span>(CAMPOSFORM <span class="hljs-keyword">as</span> <span class="hljs-variable">$k</span>=&gt;<span class="hljs-variable">$v</span>){
+                <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&lt;tr&gt;&quot;</span>;
+                <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&lt;td&gt;&lt;label for=\&quot;i<span class="hljs-subst">$k</span>\&quot;&gt;&quot;</span>.<span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;pal&#x27;</span>].<span class="hljs-string">&quot;&lt;/label&gt;&lt;/td&gt;\n&quot;</span>;
+                <span class="hljs-keyword">if</span>(<span class="hljs-variable">$k</span>!=<span class="hljs-string">&#x27;pwd&#x27;</span>){
+                    <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&lt;td&gt;&lt;input type=\&quot;text\&quot; id =\&quot;i<span class="hljs-subst">$k</span>\&quot; name=\&quot;<span class="hljs-subst">$k</span>\&quot; size=\&quot;&quot;</span>.<span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;size&#x27;</span>].<span class="hljs-string">&quot;\&quot;&gt;&lt;/td&gt;\n&quot;</span>;
+                }<span class="hljs-keyword">else</span>{
+                    <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&lt;td&gt;&lt;input type=\&quot;password\&quot; id =\&quot;i<span class="hljs-subst">$k</span>\&quot; name=\&quot;<span class="hljs-subst">$k</span>\&quot; size=\&quot;&quot;</span>.<span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;size&#x27;</span>].<span class="hljs-string">&quot;\&quot;&gt;&lt;/td&gt;\n&quot;</span>;
+                }
+                <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&lt;tr&gt;&quot;</span>;
+            }
+            <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&lt;/table&gt;&quot;</span>;
+            <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&lt;input type=\&quot;submit\&quot; name=\&quot;ok\&quot; value=\&quot;Validar\&quot;&gt;\n&quot;</span>;
+            <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&lt;/form&gt;&quot;</span>;
+            <span class="hljs-keyword">echo</span> <span class="hljs-variable">$f</span>;
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validar_form</span>(<span class="hljs-params"><span class="hljs-variable">$p</span></span>)</span>{
+            <span class="hljs-comment">//var_dump($p);</span>
+            <span class="hljs-variable">$boolMsg</span>=<span class="hljs-literal">true</span>;<span class="hljs-comment">// varible o flag para control de que mensaje tiene que salir</span>
+            <span class="hljs-keyword">foreach</span>(CAMPOSFORM <span class="hljs-keyword">as</span> <span class="hljs-variable">$k</span>=&gt;<span class="hljs-variable">$v</span>){
+                <span class="hljs-comment">//Si el campo esta vacio saltrar el error marcando aquuellos que estan vacios</span>
+                <span class="hljs-keyword">if</span>(<span class="hljs-keyword">empty</span>(<span class="hljs-variable">$p</span>[<span class="hljs-variable">$k</span>])){
+                    <span class="hljs-title function_ invoke__">printf</span>(<span class="hljs-string">&quot;&lt;h1 style=\&quot;color:red;\&quot;&gt;ERROR: El campo %s debe estar relleno&lt;/h1&gt;&quot;</span>,<span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;pal&#x27;</span>]);
+                    <span class="hljs-variable">$boolMsg</span>=<span class="hljs-literal">false</span>;
+                }<span class="hljs-keyword">else</span>{
+                    <span class="hljs-comment">//Validacion de fecha con checkdate, se separa la fecha con explode</span>
+                    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$k</span> === <span class="hljs-string">&#x27;fecNac&#x27;</span>){
+                        <span class="hljs-variable">$arrFech</span> = <span class="hljs-title function_ invoke__">explode</span>(<span class="hljs-string">&quot;-&quot;</span>,<span class="hljs-variable">$p</span>[<span class="hljs-variable">$k</span>]);
+                        <span class="hljs-comment">//print_r($arrFech);</span>
+                        <span class="hljs-keyword">if</span>(!<span class="hljs-title function_ invoke__">checkdate</span>(<span class="hljs-variable">$arrFech</span>[<span class="hljs-number">1</span>],<span class="hljs-variable">$arrFech</span>[<span class="hljs-number">0</span>],<span class="hljs-variable">$arrFech</span>[<span class="hljs-number">2</span>])){
+                            <span class="hljs-title function_ invoke__">printf</span>(<span class="hljs-string">&quot;&lt;h1 style=\&quot;color:red;\&quot;&gt;ERROR: El campo %s debe tener el patron: %s&lt;/h1&gt;&quot;</span>,<span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;pal&#x27;</span>],<span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;patronUser&#x27;</span>]);
+                            <span class="hljs-variable">$boolMsg</span>=<span class="hljs-literal">false</span>;
+                            <span class="hljs-comment">//break;</span>
+                        }
+                    <span class="hljs-comment">//Validacion de los demas campos segun su patron si no coicide, saltara el error</span>
+                    }<span class="hljs-keyword">else</span>{
+                        <span class="hljs-keyword">if</span>(!<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;patron&#x27;</span>],<span class="hljs-variable">$p</span>[<span class="hljs-variable">$k</span>])){
+                            <span class="hljs-comment">//echo $v[&#x27;patron&#x27;] .&quot;.....&quot;.$p[$k];</span>
+                            <span class="hljs-title function_ invoke__">printf</span>(<span class="hljs-string">&quot;&lt;h1 style=\&quot;color:red;\&quot;&gt;ERROR: El campo %s debe tener el patron: %s&lt;/h1&gt;&quot;</span>,<span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;pal&#x27;</span>],<span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;patronUser&#x27;</span>]);
+                            <span class="hljs-variable">$boolMsg</span>=<span class="hljs-literal">false</span>;
+                            <span class="hljs-comment">//break;</span>
+                        }
+                    }
+                }
+            }
+            <span class="hljs-comment">//Si no hay ningun error, saltara el mensaje de bienvenida</span>
+            <span class="hljs-keyword">if</span>(<span class="hljs-variable">$boolMsg</span>){
+                <span class="hljs-comment">//echo &quot;&lt;h1 style=\&quot;color:green;\&quot;&gt;TODO CORRECTO BIENVENIDE&lt;/h1&gt;&quot;;</span>
+                <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&quot;Location:back.php&quot;</span>);
+            }
+
+
+        }
+        
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validateDate</span>(<span class="hljs-params"><span class="hljs-variable">$date</span>, <span class="hljs-variable">$format</span> = <span class="hljs-string">&#x27;d-m-Y&#x27;</span></span>)
+        </span>{
+            <span class="hljs-variable">$d</span> = <span class="hljs-title class_">DateTime</span>::<span class="hljs-title function_ invoke__">createFromFormat</span>(<span class="hljs-variable">$format</span>, <span class="hljs-variable">$date</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-variable">$d</span> &amp;&amp; <span class="hljs-variable">$d</span>-&gt;<span class="hljs-title function_ invoke__">format</span>(<span class="hljs-variable">$format</span>) == <span class="hljs-variable">$date</span>;
+        }
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<p>Control</p>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-keyword">include</span>(<span class="hljs-string">&quot;Ejer1_datos.php&quot;</span>);
+        <span class="hljs-keyword">include</span>(<span class="hljs-string">&quot;Ejer1_vista.php&quot;</span>);
+        <span class="hljs-title function_ invoke__">formulario</span>();
+
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;ok&#x27;</span>])){<span class="hljs-comment">//Si esa variable existe</span>
+            <span class="hljs-title function_ invoke__">validar_form</span>(<span class="hljs-variable">$_POST</span>);
+            <span class="hljs-comment">//echo validateDate(&#x27;15-02-2000&#x27;);</span>
+        }
+
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<p>Ejer3
+Datos</p>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-title function_ invoke__">define</span> (<span class="hljs-string">&quot;VALORES&quot;</span>,[<span class="hljs-string">&quot;Euro&quot;</span>=&gt;<span class="hljs-number">166.386</span>,<span class="hljs-string">&quot;Dolar&quot;</span>=&gt;<span class="hljs-number">180.386</span>,<span class="hljs-string">&quot;Libra&quot;</span>=&gt;<span class="hljs-number">191.837</span>,<span class="hljs-string">&quot;Yen&quot;</span>=&gt; <span class="hljs-number">200.00</span>]);
+        
+        <span class="hljs-variable">$valores</span>=[<span class="hljs-string">&quot;Euro&quot;</span>=&gt;<span class="hljs-number">166.386</span>,<span class="hljs-string">&quot;Dolar&quot;</span>=&gt;<span class="hljs-number">180.386</span>,<span class="hljs-string">&quot;Libra&quot;</span>=&gt;<span class="hljs-number">191.837</span>,<span class="hljs-string">&quot;Yen&quot;</span>=&gt; <span class="hljs-number">200.00</span>];
+
+        <span class="hljs-title function_ invoke__">define</span> (<span class="hljs-string">&quot;IDIOMAS&quot;</span>,
+            [<span class="hljs-string">&quot;es&quot;</span>=&gt;[<span class="hljs-string">&quot;name&quot;</span>=&gt;<span class="hljs-string">&quot;Español&quot;</span>,<span class="hljs-string">&quot;select_lang&quot;</span>=&gt;<span class="hljs-string">&quot;Seleccione idioma: &quot;</span>,<span class="hljs-string">&quot;intro_cant&quot;</span>=&gt;<span class="hljs-string">&quot;Introduzca la cantidad a convertir: \n&quot;</span>,<span class="hljs-string">&quot;msg&quot;</span>=&gt;<span class="hljs-string">&quot;&lt;h1&gt;%d %s son %d pesetas &lt;/h1&gt;&quot;</span>],<span class="hljs-string">&quot;en&quot;</span>=&gt;[<span class="hljs-string">&quot;name&quot;</span>=&gt;<span class="hljs-string">&quot;English&quot;</span>,<span class="hljs-string">&quot;select_lang&quot;</span>=&gt;<span class="hljs-string">&quot;Select a language: &quot;</span>,<span class="hljs-string">&quot;intro_cant&quot;</span>=&gt;<span class="hljs-string">&quot;Enter the amount to convert: \n&quot;</span>,<span class="hljs-string">&quot;msg&quot;</span>=&gt;<span class="hljs-string">&quot;&lt;h1&gt;%d %s are %d pesetas &lt;/h1&gt;&quot;</span>],<span class="hljs-string">&quot;fr&quot;</span>=&gt;[<span class="hljs-string">&quot;name&quot;</span>=&gt;<span class="hljs-string">&quot;FranÇais&quot;</span>,<span class="hljs-string">&quot;select_lang&quot;</span>=&gt;<span class="hljs-string">&quot;Sélectionnez une langue: &quot;</span>,<span class="hljs-string">&quot;intro_cant&quot;</span>=&gt;<span class="hljs-string">&quot;Entrez le montant à convertir: \n&quot;</span>,<span class="hljs-string">&quot;msg&quot;</span>=&gt;<span class="hljs-string">&quot;&lt;h1&gt;%d %s sont %d pesetas &lt;/h1&gt;&quot;</span>],<span class="hljs-string">&quot;de&quot;</span>=&gt;[<span class="hljs-string">&quot;name&quot;</span>=&gt;<span class="hljs-string">&quot;Deutch&quot;</span>,<span class="hljs-string">&quot;select_lang&quot;</span>=&gt;<span class="hljs-string">&quot;Wähle eine Sprache: &quot;</span>,<span class="hljs-string">&quot;intro_cant&quot;</span>=&gt;<span class="hljs-string">&quot;Geben Sie den umzurechnenden Betrag ein: \n&quot;</span>,<span class="hljs-string">&quot;msg&quot;</span>=&gt;<span class="hljs-string">&quot;&lt;h1&gt;%d %s sind %d pesetas &lt;/h1&gt;&quot;</span>]
+                ]);
+
+    
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<p>Vista</p>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+        
+        <span class="hljs-comment">//funciones para generar vistas</span>
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">form_cambio</span>(<span class="hljs-params"><span class="hljs-variable">$lang</span>=<span class="hljs-string">&quot;es&quot;</span></span>)</span>{
+            
+            <span class="hljs-variable">$f</span>=<span class="hljs-string">&quot;&lt;form method=post action=&quot;</span>.<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;PHP_SELF&#x27;</span>].<span class="hljs-string">&quot;&gt;\n&quot;</span>;
+            <span class="hljs-variable">$f</span>.=IDIOMAS[<span class="hljs-variable">$lang</span>][<span class="hljs-string">&quot;select_lang&quot;</span>];
+            <span class="hljs-variable">$f</span>.= <span class="hljs-title function_ invoke__">lista</span>(IDIOMAS,<span class="hljs-string">&quot;idiomas&quot;</span>,<span class="hljs-string">&quot;es&quot;</span>);
+            <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&lt;input type=\&quot;submit\&quot; name=\&quot;ok_lang\&quot; value=\&quot;Enviar\&quot;&gt;\n&quot;</span>;
+            <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&lt;/form&gt;&quot;</span>;
+
+            <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&lt;form method=post action=&quot;</span>.<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;PHP_SELF&#x27;</span>].<span class="hljs-string">&quot;&gt;\n&quot;</span>;     
+            <span class="hljs-variable">$f</span>.= IDIOMAS[<span class="hljs-variable">$lang</span>][<span class="hljs-string">&quot;intro_cant&quot;</span>];
+            <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&lt;input type=\&quot;number\&quot; name=\&quot;cantidad\&quot; value= 0 size=\&quot;10\&quot;&gt;\n&quot;</span>;
+            <span class="hljs-comment">//$f.= radio($datos,&quot;conv&quot;);</span>
+            <span class="hljs-variable">$f</span>.= <span class="hljs-title function_ invoke__">lista</span>(VALORES,<span class="hljs-string">&quot;conv&quot;</span>);
+            <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&lt;input type=\&quot;submit\&quot; name=\&quot;ok\&quot; value=\&quot;Enviar\&quot;&gt;\n&quot;</span>;
+            <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&lt;/form&gt;&quot;</span>;
+            <span class="hljs-keyword">echo</span> <span class="hljs-variable">$f</span>;
+        }
+
+        <span class="hljs-comment">/*Funcion para generar dinamicamente los radio button
+        se le pasa por paramentros un array, un nombre para el input 
+        y el check si no hay otro por defecto estara seleccionado Dolar*/</span>
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">radio</span>(<span class="hljs-params"><span class="hljs-variable">$a</span>,<span class="hljs-variable">$name</span>,<span class="hljs-variable">$check</span>=<span class="hljs-string">&quot;Dolar&quot;</span></span>)</span>{
+            <span class="hljs-variable">$f</span>=<span class="hljs-string">&quot;&quot;</span>;
+            <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$a</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$k</span> =&gt;<span class="hljs-variable">$v</span>){
+                <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&lt;input type=radio name=\&quot;<span class="hljs-subst">$name</span>\&quot; value=\&quot;<span class="hljs-subst">$k</span>\&quot;&quot;</span>;
+                <span class="hljs-keyword">if</span>(<span class="hljs-variable">$check</span> === <span class="hljs-variable">$k</span>) <span class="hljs-variable">$f</span>.= <span class="hljs-string">&quot; checked &quot;</span>; <span class="hljs-comment">//si check coicide con la moneda que se pasa como argumento pondra el checked</span>
+
+                <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&gt;&quot;</span>.<span class="hljs-title function_ invoke__">plurales</span>(<span class="hljs-variable">$k</span>).<span class="hljs-string">&quot;&lt;br&gt;\n&quot;</span>;           
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-variable">$f</span>;
+        }
+
+        <span class="hljs-comment">/*Funcion para generar dinamicamente una lista desplegable
+        se le pasa por paramentros un array, un nombre para el select 
+        y el selected si no hay otro por defecto estara seleccionado Dolar*/</span>
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">lista</span>(<span class="hljs-params"><span class="hljs-variable">$a</span>,<span class="hljs-variable">$name</span>,<span class="hljs-variable">$selected</span>=<span class="hljs-string">&quot;Dolar&quot;</span></span>)</span>{
+            <span class="hljs-comment">//var_dump($a);</span>
+            <span class="hljs-variable">$f</span>=<span class="hljs-string">&quot;&lt;select name = <span class="hljs-subst">$name</span>&gt;&quot;</span>;
+            <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$a</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$k</span> =&gt;<span class="hljs-variable">$v</span>){
+                <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&lt;option value=\&quot;<span class="hljs-subst">$k</span>\&quot;&quot;</span>;
+                <span class="hljs-keyword">if</span>(<span class="hljs-variable">$selected</span> === <span class="hljs-variable">$k</span>) <span class="hljs-variable">$f</span>.= <span class="hljs-string">&quot; selected &quot;</span>;
+                
+                <span class="hljs-keyword">if</span>(<span class="hljs-variable">$name</span>==<span class="hljs-string">&quot;conv&quot;</span>) <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&gt;&quot;</span>.<span class="hljs-title function_ invoke__">plurales</span>(<span class="hljs-variable">$k</span>);
+
+                <span class="hljs-keyword">elseif</span>(<span class="hljs-variable">$name</span>==<span class="hljs-string">&quot;idiomas&quot;</span>) <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&gt;&quot;</span>.<span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;name&#x27;</span>];
+
+                <span class="hljs-keyword">else</span> <span class="hljs-variable">$f</span> .= <span class="hljs-string">&quot;&gt;&quot;</span>.<span class="hljs-variable">$k</span>;
+                <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&lt;/option&gt;&lt;br&gt;&quot;</span>;           
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-variable">$f</span>;
+        }
+        
+        <span class="hljs-comment">//Funcion que pone el plurar a las palabras segun como terminen usando regex</span>
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">plurales</span>(<span class="hljs-params"><span class="hljs-variable">$singular</span></span>)</span>{
+
+            <span class="hljs-keyword">if</span>(<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&quot;/[aeiou]$/&quot;</span>,<span class="hljs-variable">$singular</span>)){
+                <span class="hljs-variable">$singular</span> .= <span class="hljs-string">&quot;s&quot;</span>;
+            }<span class="hljs-keyword">elseif</span>(<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&quot;/[z]$/&quot;</span>,<span class="hljs-variable">$singular</span>)){
+                <span class="hljs-variable">$singular</span>[<span class="hljs-title function_ invoke__">strlen</span>(<span class="hljs-variable">$singular</span>)-<span class="hljs-number">1</span>]=<span class="hljs-string">&quot;c&quot;</span>;
+                <span class="hljs-variable">$singular</span> .= <span class="hljs-string">&quot;es&quot;</span>;
+            }<span class="hljs-keyword">elseif</span>(<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&quot;/[s]$/&quot;</span>,<span class="hljs-variable">$singular</span>)){
+                <span class="hljs-variable">$singular</span> = <span class="hljs-string">&quot;Los&quot;</span>.<span class="hljs-variable">$singular</span>;
+            }
+            <span class="hljs-keyword">else</span>{
+                <span class="hljs-variable">$singular</span> .= <span class="hljs-string">&quot;es&quot;</span>; 
+            }
+            
+            <span class="hljs-keyword">return</span> <span class="hljs-variable">$singular</span>;
+        }
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<p>Control</p>
+<pre><code class="language-php">    &lt;html&gt;
+        &lt;head&gt;
+            &lt;meta content=<span class="hljs-string">&quot;text/html; charset=ISO-8859-1&quot;</span> http-equiv=<span class="hljs-string">&quot;content-type&quot;</span>&gt;
+            &lt;title&gt;Ejercicio <span class="hljs-number">5.2</span>&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+                
+            <span class="hljs-meta">&lt;?php</span> 
+                <span class="hljs-keyword">include</span>(<span class="hljs-string">&quot;ejer3.datos.php&quot;</span>); <span class="hljs-comment">//Trae el codigo del archivo indicado</span>
+                <span class="hljs-keyword">include</span>(<span class="hljs-string">&quot;ejer3.vista.php&quot;</span>);
+            
+                <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&quot;ok_lang&quot;</span>])){
+                    <span class="hljs-title function_ invoke__">form_cambio</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&quot;idiomas&quot;</span>]);
+                }<span class="hljs-keyword">else</span> {
+                    <span class="hljs-title function_ invoke__">form_cambio</span>();
+                }
+                <span class="hljs-comment">//var_dump($_POST);</span>
+                <span class="hljs-title function_ invoke__">cambio_moneda</span>(<span class="hljs-variable">$_POST</span>);
+
+                <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cambio_moneda</span>(<span class="hljs-params"><span class="hljs-variable">$p</span></span>)</span>{
+                    <span class="hljs-comment">/*Para evitar warnings al principio ya que no tenemosel array _POST 
+                    debemos comprobar si se ha pulsado el boton enviar antes de utilizar los datos*/</span>
+                    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$p</span>[<span class="hljs-string">&#x27;ok&#x27;</span>])){<span class="hljs-comment">//Si esa variable existe</span>
+                    
+                        <span class="hljs-variable">$conv</span>=<span class="hljs-variable">$p</span>[<span class="hljs-string">&#x27;conv&#x27;</span>];
+                        <span class="hljs-variable">$cantidad</span>=<span class="hljs-variable">$p</span>[<span class="hljs-string">&#x27;cantidad&#x27;</span>];
+                        <span class="hljs-variable">$peseta</span>=<span class="hljs-variable">$cantidad</span>*VALORES[<span class="hljs-variable">$conv</span>];
+                        
+                    
+                        <span class="hljs-title function_ invoke__">printf</span>(IDIOMAS[<span class="hljs-string">&quot;es&quot;</span>][<span class="hljs-string">&quot;msg&quot;</span>],<span class="hljs-variable">$cantidad</span>,<span class="hljs-title function_ invoke__">plurales</span>(<span class="hljs-variable">$conv</span>),<span class="hljs-variable">$peseta</span>);
+                    }
+                }
+            <span class="hljs-meta">?&gt;</span>
+        &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre>
+<p><a href="#">Indice</a></p>
+<h2 id="imagenes">Imagenes</h2>
+<h3 id="iterara-correctamente">Iterara correctamente</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+
+        <span class="hljs-variable">$ruta</span> = <span class="hljs-string">&quot;../../img&quot;</span>;
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$gestor</span> = <span class="hljs-title function_ invoke__">opendir</span>(<span class="hljs-variable">$ruta</span>)) {
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Gestor de directorio: <span class="hljs-subst">$gestor</span>\n&quot;</span>;
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Entradas:\n&quot;</span>;
+        
+            <span class="hljs-comment">/* Esta es la forma correcta de iterar sobre el directorio. */</span>
+            <span class="hljs-keyword">while</span> (<span class="hljs-literal">false</span> !== (<span class="hljs-variable">$entrada</span> = <span class="hljs-title function_ invoke__">readdir</span>(<span class="hljs-variable">$gestor</span>))) {
+                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;<span class="hljs-subst">$entrada</span>\n&quot;</span>;
+            }
+        
+            <span class="hljs-comment">/* Esta es la forma errónea de iterar sobre el directorio. */</span>
+            <span class="hljs-keyword">while</span> (<span class="hljs-variable">$entrada</span> = <span class="hljs-title function_ invoke__">readdir</span>(<span class="hljs-variable">$gestor</span>)) {
+                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;<span class="hljs-subst">$entrada</span>\n&quot;</span>;
+            }
+        
+            <span class="hljs-title function_ invoke__">closedir</span>(<span class="hljs-variable">$gestor</span>);
+        }
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="tabla-de-img">Tabla de img</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-variable">$ruta</span> = <span class="hljs-string">&quot;../../img&quot;</span>;
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$gestor</span> = <span class="hljs-title function_ invoke__">opendir</span>(<span class="hljs-variable">$ruta</span>))
+        {
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;table border=1&gt;&quot;</span>;
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;tr&gt;&quot;</span>;
+            <span class="hljs-variable">$i</span>=<span class="hljs-number">0</span>;
+            <span class="hljs-variable">$numcols</span>=<span class="hljs-number">6</span>;
+            <span class="hljs-keyword">while</span> (<span class="hljs-literal">false</span> !== (<span class="hljs-variable">$archivo</span> = <span class="hljs-title function_ invoke__">readdir</span>(<span class="hljs-variable">$gestor</span>)))
+            {
+                <span class="hljs-keyword">if</span> (<span class="hljs-variable">$archivo</span>!=<span class="hljs-string">&quot;.&quot;</span> &amp;&amp; <span class="hljs-variable">$archivo</span>!=<span class="hljs-string">&quot;..&quot;</span>)<span class="hljs-comment">//Si el archivo es el padre</span>
+                {
+                    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$i</span>%<span class="hljs-variable">$numcols</span>==<span class="hljs-number">0</span>) <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;tr&gt;&quot;</span>;
+                    
+                    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;td&gt;&quot;</span>;
+                    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;a href=&#x27;<span class="hljs-subst">$ruta</span>/<span class="hljs-subst">$archivo</span>&#x27;&gt;&lt;img src=&#x27;<span class="hljs-subst">$ruta</span>/<span class="hljs-subst">$archivo</span>&#x27; width=100 height=100&gt;&lt;/a&gt;&quot;</span>;
+                    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/td&gt;&quot;</span>;
+
+                    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$i</span>%<span class="hljs-variable">$numcols</span>==<span class="hljs-variable">$numcols</span>) <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/tr&gt;&quot;</span>;
+                    
+                    <span class="hljs-variable">$i</span>++;
+                }
+            }
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/tr&gt;&quot;</span>;
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/table&gt;&quot;</span>;
+            <span class="hljs-title function_ invoke__">closedir</span>(<span class="hljs-variable">$gestor</span>);
+        }
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="crear-miniaturas-hay-que-instalar-algo">Crear miniaturas (hay que instalar algo)</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-title function_ invoke__">define</span>(<span class="hljs-string">&quot;IMGS&quot;</span>,<span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;jpg&quot;</span>,<span class="hljs-string">&quot;png&quot;</span>,<span class="hljs-string">&quot;bmp&quot;</span>,<span class="hljs-string">&quot;gif&quot;</span>));
+        <span class="hljs-variable">$ruta</span> = <span class="hljs-string">&quot;../../img&quot;</span>;
+        <span class="hljs-variable">$numcols</span>=<span class="hljs-number">5</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Tabla de Fotos con Enlace&lt;/h1&gt;&quot;</span>;
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validar</span>(<span class="hljs-params"><span class="hljs-variable">$fotos</span></span>)
+        </span>{   
+            <span class="hljs-variable">$ext</span> = <span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$fotos</span>,<span class="hljs-title function_ invoke__">strrpos</span>(<span class="hljs-variable">$fotos</span>,<span class="hljs-string">&#x27;.&#x27;</span>)+<span class="hljs-number">1</span>);
+            <span class="hljs-comment">//$ext= pathinfo($fotos, PATHINFO_EXTENSION);</span>
+            <span class="hljs-variable">$p</span> = <span class="hljs-string">&quot;/&quot;</span>;
+            <span class="hljs-keyword">foreach</span>(IMGS <span class="hljs-keyword">as</span> <span class="hljs-variable">$v</span>) <span class="hljs-variable">$p</span>.=<span class="hljs-string">&quot;<span class="hljs-subst">$v</span>|&quot;</span>;
+            <span class="hljs-variable">$p</span> = <span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$p</span>,<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>).<span class="hljs-string">&quot;/&quot;</span>;
+            <span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-variable">$p</span>,<span class="hljs-variable">$ext</span>);
+            
+
+        }
+        
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">crea_tumbs</span>(<span class="hljs-params"><span class="hljs-variable">$foto</span>,<span class="hljs-variable">$ruta</span></span>)
+        </span>{
+         
+            <span class="hljs-keyword">if</span> (!<span class="hljs-title function_ invoke__">is_dir</span>(<span class="hljs-variable">$ruta</span>.<span class="hljs-string">&#x27;/thumb&#x27;</span>))
+                <span class="hljs-title function_ invoke__">mkdir</span> (<span class="hljs-variable">$ruta</span>.<span class="hljs-string">&#x27;/thumb&#x27;</span>, <span class="hljs-number">0777</span>);
+
+            <span class="hljs-keyword">if</span> (!<span class="hljs-title function_ invoke__">is_file</span>(<span class="hljs-variable">$ruta</span>.<span class="hljs-string">&#x27;/thumb/MINI-&#x27;</span>.<span class="hljs-variable">$foto</span>))
+            <span class="hljs-keyword">echo</span> <span class="hljs-variable">$ruta</span>.<span class="hljs-string">&#x27;/thumb/MINI-&#x27;</span>.<span class="hljs-variable">$foto</span>;  
+                <span class="hljs-title function_ invoke__">system</span> (<span class="hljs-string">&quot;convert -sample 40x40 <span class="hljs-subst">$ruta</span>/<span class="hljs-subst">$foto</span> <span class="hljs-subst">$ruta</span>/thumb/MINI-<span class="hljs-subst">$foto</span>&quot;</span>);
+        }
+
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$gestor</span> = <span class="hljs-title function_ invoke__">opendir</span>(<span class="hljs-variable">$ruta</span>))
+        {
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;table border=1&gt;&quot;</span>;
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;tr&gt;&quot;</span>;
+        
+        
+            <span class="hljs-variable">$puntero</span> = <span class="hljs-title function_ invoke__">opendir</span>(<span class="hljs-variable">$ruta</span>);
+            <span class="hljs-variable">$i</span>=<span class="hljs-number">0</span>;
+            <span class="hljs-keyword">while</span> (<span class="hljs-literal">false</span> !== (<span class="hljs-variable">$archivo</span> = <span class="hljs-title function_ invoke__">readdir</span>(<span class="hljs-variable">$gestor</span>)))
+            {
+                <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">validar</span>(<span class="hljs-variable">$archivo</span>))<span class="hljs-comment">//Si el archivo es el padre</span>
+                {
+                    <span class="hljs-title function_ invoke__">crea_tumbs</span>(<span class="hljs-variable">$archivo</span>,<span class="hljs-variable">$ruta</span>);
+                    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$i</span>%<span class="hljs-variable">$numcols</span>==<span class="hljs-number">0</span>) <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;tr&gt;&quot;</span>;
+                    
+                    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;td&gt;&quot;</span>;
+                    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;a href=&#x27;<span class="hljs-subst">$ruta</span>/<span class="hljs-subst">$archivo</span>&#x27;&gt;&lt;img src=&#x27;<span class="hljs-subst">$ruta</span>/<span class="hljs-subst">$archivo</span>&#x27; width=100 height=100&gt;&lt;/a&gt;&quot;</span>;
+                    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/td&gt;&quot;</span>;
+
+                    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$i</span>%<span class="hljs-variable">$numcols</span>==<span class="hljs-variable">$numcols</span>) <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/tr&gt;&quot;</span>;
+                    
+                    <span class="hljs-variable">$i</span>++;
+                }
+            }
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/tr&gt;&quot;</span>;
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/table&gt;&quot;</span>;
+            <span class="hljs-title function_ invoke__">closedir</span>(<span class="hljs-variable">$gestor</span>);
+        }
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="subir-imgs">Subir imgs</h3>
+<pre><code class="language-php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-title function_ invoke__">form_fotos</span>()<span class="hljs-meta">?&gt;</span>   
+    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-title function_ invoke__">define</span>(<span class="hljs-string">&quot;IMGS&quot;</span>,<span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;jpg&quot;</span>,<span class="hljs-string">&quot;png&quot;</span>,<span class="hljs-string">&quot;bmp&quot;</span>,<span class="hljs-string">&quot;gif&quot;</span>));
+        <span class="hljs-variable">$ruta</span> = <span class="hljs-string">&quot;../../img&quot;</span>;
+        <span class="hljs-variable">$numcols</span>=<span class="hljs-number">5</span>;
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h1&gt;Tabla de Fotos con Enlace&lt;/h1&gt;&quot;</span>;
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validar</span>(<span class="hljs-params"><span class="hljs-variable">$fotos</span></span>)</span>{   
+            <span class="hljs-variable">$ext</span> = <span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$fotos</span>,<span class="hljs-title function_ invoke__">strrpos</span>(<span class="hljs-variable">$fotos</span>,<span class="hljs-string">&#x27;.&#x27;</span>)+<span class="hljs-number">1</span>);
+            <span class="hljs-comment">//$ext= pathinfo($fotos, PATHINFO_EXTENSION);</span>
+            <span class="hljs-variable">$p</span> = <span class="hljs-string">&quot;/&quot;</span>;
+            <span class="hljs-keyword">foreach</span>(IMGS <span class="hljs-keyword">as</span> <span class="hljs-variable">$v</span>) <span class="hljs-variable">$p</span>.=<span class="hljs-string">&quot;<span class="hljs-subst">$v</span>|&quot;</span>;
+            <span class="hljs-variable">$p</span> = <span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$p</span>,<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>).<span class="hljs-string">&quot;/&quot;</span>;
+            <span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-variable">$p</span>,<span class="hljs-variable">$ext</span>);
+            
+
+        }
+        
+        <span class="hljs-comment">/*function crea_tumbs($foto,$ruta)
+        {
+         
+            if (!is_dir($ruta.&#x27;/thumb&#x27;))
+                mkdir ($ruta.&#x27;/thumb&#x27;, 0777);
+
+            if (!is_file($ruta.&#x27;/thumb/MINI-&#x27;.$foto))
+            echo $ruta.&#x27;/thumb/MINI-&#x27;.$foto;  
+                system (&quot;convert -sample 40x40 $ruta/$foto $ruta/thumb/MINI-$foto&quot;);
+        }*/</span>
+
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">form_fotos</span>(<span class="hljs-params"></span>)</span>{
+            <span class="hljs-variable">$f</span>= <span class="hljs-string">&quot;&lt;form enctype=&#x27;multipart/form-data&#x27; action=&quot;</span>.<span class="hljs-variable">$_SERVER</span>[<span class="hljs-string">&#x27;PHP_SELF&#x27;</span>] .<span class="hljs-string">&quot; method=&#x27;post&#x27;&gt;&quot;</span>;
+            <span class="hljs-variable">$f</span>.= <span class="hljs-string">&quot;Enviar foto: &lt;input name=&#x27;foto&#x27; type=&#x27;file&#x27;&gt;&quot;</span>;
+            <span class="hljs-variable">$f</span>.= <span class="hljs-string">&quot;&lt;input type=&#x27;submit&#x27; name=&#x27;ok&#x27; value=&#x27;Enviar&#x27;&gt;&quot;</span>;
+            <span class="hljs-variable">$f</span>.=<span class="hljs-string">&quot;&lt;/form&gt;&quot;</span>;
+            <span class="hljs-keyword">echo</span> <span class="hljs-variable">$f</span>;
+
+        }
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;ok&#x27;</span>])){
+        <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">is_uploaded_file</span>(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;foto&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>])) {
+            <span class="hljs-title function_ invoke__">print_r</span>(<span class="hljs-variable">$_FILES</span>);
+          
+            <span class="hljs-variable">$nombre</span> = <span class="hljs-string">&quot;nueva&quot;</span>.<span class="hljs-title function_ invoke__">rand</span>(<span class="hljs-number">0</span>,<span class="hljs-number">100</span>);
+            <span class="hljs-keyword">print</span>(<span class="hljs-variable">$nombre</span>);
+            <span class="hljs-variable">$ext</span> = <span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;foto&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>],<span class="hljs-title function_ invoke__">strrpos</span>(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;foto&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>],<span class="hljs-string">&#x27;.&#x27;</span>)+<span class="hljs-number">1</span>);
+            <span class="hljs-title function_ invoke__">copy</span>(<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;foto&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>], <span class="hljs-variable">$ruta</span>.<span class="hljs-string">&quot;/<span class="hljs-subst">$nombre</span>.&quot;</span>.<span class="hljs-variable">$ext</span>);
+           } <span class="hljs-keyword">else</span>
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Possible file upload attack. Filename: &quot;</span> .
+           <span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;foto&#x27;</span>][<span class="hljs-string">&#x27;name&#x27;</span>]. <span class="hljs-string">&quot;---&quot;</span>.<span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;foto&#x27;</span>][<span class="hljs-string">&#x27;tmp_name&#x27;</span>];
+        }
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$gestor</span> = <span class="hljs-title function_ invoke__">opendir</span>(<span class="hljs-variable">$ruta</span>))
+        {
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;table border=1&gt;&quot;</span>;
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;tr&gt;&quot;</span>;
+        
+        
+            <span class="hljs-variable">$puntero</span> = <span class="hljs-title function_ invoke__">opendir</span>(<span class="hljs-variable">$ruta</span>);
+            <span class="hljs-variable">$i</span>=<span class="hljs-number">0</span>;
+            <span class="hljs-keyword">while</span> (<span class="hljs-literal">false</span> !== (<span class="hljs-variable">$archivo</span> = <span class="hljs-title function_ invoke__">readdir</span>(<span class="hljs-variable">$gestor</span>)))
+            {
+                <span class="hljs-keyword">if</span> (<span class="hljs-title function_ invoke__">validar</span>(<span class="hljs-variable">$archivo</span>))<span class="hljs-comment">//Si el archivo es el padre</span>
+                {
+                    <span class="hljs-comment">//crea_tumbs($archivo,$ruta);</span>
+                    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$i</span>%<span class="hljs-variable">$numcols</span>==<span class="hljs-number">0</span>) <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;tr&gt;&quot;</span>;
+                    
+                    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;td&gt;&quot;</span>;
+                    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;a href=&#x27;<span class="hljs-subst">$ruta</span>/<span class="hljs-subst">$archivo</span>&#x27;&gt;&lt;img src=&#x27;<span class="hljs-subst">$ruta</span>/<span class="hljs-subst">$archivo</span>&#x27; width=100 height=100&gt;&lt;/a&gt;&quot;</span>;
+                    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/td&gt;&quot;</span>;
+
+                    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$i</span>%<span class="hljs-variable">$numcols</span>==<span class="hljs-variable">$numcols</span>) <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/tr&gt;&quot;</span>;
+                    
+                    <span class="hljs-variable">$i</span>++;
+                }
+            }
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/tr&gt;&quot;</span>;
+            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;/table&gt;&quot;</span>;
+            <span class="hljs-title function_ invoke__">closedir</span>(<span class="hljs-variable">$gestor</span>);
+        }
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<p><a href="#">Indice</a></p>
+<h2 id="archivos">Archivos</h2>
+<h3 id="lectura-caracter-a-caracter">Lectura caracter a caracter</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-variable">$ruta</span>=<span class="hljs-string">&quot;../&quot;</span>;
+        <span class="hljs-variable">$nomf</span>=<span class="hljs-variable">$ruta</span>.<span class="hljs-string">&quot;alumnos.txt&quot;</span>;
+        <span class="hljs-variable">$f</span> = <span class="hljs-title function_ invoke__">fopen</span>(<span class="hljs-variable">$nomf</span>,<span class="hljs-string">&quot;r&quot;</span>);
+
+        <span class="hljs-variable">$fout</span>=<span class="hljs-title function_ invoke__">fopen</span>(<span class="hljs-variable">$ruta</span>.<span class="hljs-string">&quot;salida.txt&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>);
+        <span class="hljs-variable">$alumnos</span>= <span class="hljs-keyword">array</span>();
+        <span class="hljs-comment">//Si el fichero para lectura no exites devuelve false</span>
+        <span class="hljs-keyword">if</span>(!<span class="hljs-variable">$f</span>) <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;No existe el archivo &quot;</span>.<span class="hljs-variable">$nomf</span>;
+        <span class="hljs-keyword">else</span>{
+        <span class="hljs-comment">//leer el archivo linea por linea</span>
+            <span class="hljs-keyword">while</span>(!<span class="hljs-title function_ invoke__">feof</span>(<span class="hljs-variable">$f</span>)){
+                <span class="hljs-variable">$c</span> = <span class="hljs-title function_ invoke__">fgetc</span>(<span class="hljs-variable">$f</span>);
+                <span class="hljs-keyword">echo</span> (<span class="hljs-variable">$c</span>==<span class="hljs-string">&#x27;\n&#x27;</span>||<span class="hljs-variable">$c</span> == <span class="hljs-string">&#x27;\r&#x27;</span>) ?<span class="hljs-string">&quot;&lt;br&gt;&quot;</span>:<span class="hljs-variable">$c</span>;
+                
+                <span class="hljs-title function_ invoke__">fwrite</span>(<span class="hljs-variable">$fout</span>,<span class="hljs-variable">$c</span>);
+            }
+
+        }  
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="lectura-linea-a-linea">Lectura linea a linea</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&#x27;Content-Type: text/html; charset=UTF-8&#x27;</span>);
+        <span class="hljs-title function_ invoke__">define</span>(<span class="hljs-string">&quot;N&quot;</span>,<span class="hljs-string">&quot;\n&quot;</span>);
+
+        <span class="hljs-variable">$ruta</span>=<span class="hljs-string">&quot;../&quot;</span>;
+        <span class="hljs-variable">$nomf</span>=<span class="hljs-variable">$ruta</span>.<span class="hljs-string">&quot;alumnos.txt&quot;</span>;
+        <span class="hljs-variable">$f</span> = <span class="hljs-title function_ invoke__">fopen</span>(<span class="hljs-variable">$nomf</span>,<span class="hljs-string">&quot;r&quot;</span>);
+
+        <span class="hljs-variable">$fout</span>=<span class="hljs-title function_ invoke__">fopen</span>(<span class="hljs-variable">$ruta</span>.<span class="hljs-string">&quot;salida.txt&quot;</span>,<span class="hljs-string">&quot;w&quot;</span>);
+        <span class="hljs-variable">$alumnos</span>= <span class="hljs-keyword">array</span>();
+
+        <span class="hljs-comment">//Si el fichero par lectura no exites devuelve false</span>
+        <span class="hljs-keyword">if</span>(!<span class="hljs-variable">$f</span>) <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;No existe el archivo &quot;</span>.<span class="hljs-variable">$nomf</span>;
+        <span class="hljs-keyword">else</span>{
+        <span class="hljs-comment">//leer el archivo s por s</span>
+            <span class="hljs-variable">$lineaNum</span>=<span class="hljs-number">0</span>;
+            <span class="hljs-title function_ invoke__">define</span>(<span class="hljs-string">&quot;lineas&quot;</span>,<span class="hljs-number">4</span>);
+            <span class="hljs-keyword">while</span>(!<span class="hljs-title function_ invoke__">feof</span>(<span class="hljs-variable">$f</span>)){
+                
+                <span class="hljs-variable">$s</span> = <span class="hljs-title function_ invoke__">mb_convert_encoding</span>(<span class="hljs-title function_ invoke__">trim</span>(<span class="hljs-title function_ invoke__">fgets</span>(<span class="hljs-variable">$f</span>)),<span class="hljs-string">&#x27;UTF-8&#x27;</span>,<span class="hljs-string">&#x27;ISO-8859-1&#x27;</span>);
+                
+                <span class="hljs-keyword">switch</span>(<span class="hljs-variable">$lineaNum</span>%lineas){
+                    <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:
+                        <span class="hljs-variable">$id</span> = <span class="hljs-variable">$s</span>; 
+                        <span class="hljs-variable">$alumnos</span>[<span class="hljs-variable">$id</span>] = <span class="hljs-keyword">array</span>();
+                        <span class="hljs-keyword">break</span>;
+                    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+                        <span class="hljs-variable">$alumno</span>=<span class="hljs-title function_ invoke__">explode</span>(<span class="hljs-string">&quot; | &quot;</span>,<span class="hljs-variable">$s</span>);
+
+                        <span class="hljs-variable">$alumnos</span>[<span class="hljs-variable">$id</span>][<span class="hljs-string">&quot;nombre&quot;</span>] = <span class="hljs-variable">$alumno</span>[<span class="hljs-number">0</span>];
+                        <span class="hljs-variable">$alumnos</span>[<span class="hljs-variable">$id</span>][<span class="hljs-string">&quot;apellido1&quot;</span>] = <span class="hljs-variable">$alumno</span>[<span class="hljs-number">1</span>];
+                        <span class="hljs-variable">$alumnos</span>[<span class="hljs-variable">$id</span>][<span class="hljs-string">&quot;apellido2&quot;</span>] = <span class="hljs-variable">$alumno</span>[<span class="hljs-number">2</span>];
+                        <span class="hljs-comment">/*$nombre = $alumno[0];
+                        $apellido1 = $alumno[1];
+                        $apellido2 = $alumno[2];*/</span>
+                        
+                        <span class="hljs-keyword">break</span>;
+                    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+
+                        <span class="hljs-variable">$alumnos</span>[<span class="hljs-variable">$id</span>][<span class="hljs-string">&quot;fechaNacimiento&quot;</span>] = <span class="hljs-title function_ invoke__">date</span>(<span class="hljs-string">&quot;d-m-Y&quot;</span>,<span class="hljs-title function_ invoke__">strtotime</span>(<span class="hljs-variable">$s</span>));
+                        
+                        <span class="hljs-comment">//$fechaNacimiento = $s;</span>
+                        <span class="hljs-keyword">break</span>;
+                    <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:
+                        <span class="hljs-variable">$alumnos</span>[<span class="hljs-variable">$id</span>][<span class="hljs-string">&quot;curso&quot;</span>] =<span class="hljs-variable">$s</span>;
+                        <span class="hljs-comment">//$curso = $s;</span>
+                        <span class="hljs-comment">/*
+                        // Crear un array asociativo para cada alumno
+                        $alumno = [
+                            &quot;nombre&quot; =&gt; $nombre,
+                            &quot;apellido1&quot; =&gt; $apellido1,
+                            &quot;apellido2&quot; =&gt; $apellido2,
+                            &quot;fechaNacimiento&quot; =&gt; $fechaNacimiento,
+                            &quot;curso&quot; =&gt; $curso
+                        ];
+            
+                        // Agregar el alumno al array principal usando el ID como índice
+                        $alumnos[$id] = $alumno;*/</span>
+                        <span class="hljs-keyword">break</span>;    
+                }   
+                <span class="hljs-variable">$lineaNum</span>++;
+                
+            }
+
+
+            <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tabla</span>(<span class="hljs-params"><span class="hljs-variable">$alumnos</span></span>)</span>{
+                <span class="hljs-variable">$t</span>=<span class="hljs-string">&quot;&lt;table border=&#x27;1&#x27;&gt;&quot;</span>.N;
+                <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;caption&gt;Alumnos de dam y daw&lt;/caption&gt;&quot;</span>.N;
+                <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;thead&gt;&quot;</span>.N;
+                <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;th&gt;id&lt;/th&gt;&quot;</span>.N;
+                <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;th&gt;Apellidos&lt;/th&gt;&quot;</span>.N;
+                <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;th&gt;Nombre&lt;/th&gt;&quot;</span>.N;
+                <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;th&gt;Fecha Nacimiento&lt;/th&gt;&quot;</span>.N;
+                <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;th&gt;Curso&lt;/th&gt;&quot;</span>.N;
+                <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;/thead&gt;&quot;</span>.N;
+                <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;tbody&gt;&quot;</span>.N;
+
+                <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$alumnos</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$k</span> =&gt; <span class="hljs-variable">$v</span>){
+                    <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;tr&gt;&quot;</span>.N;
+                    <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;td&gt;<span class="hljs-subst">$k</span>&lt;/td&gt;&quot;</span>.N;
+                    <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;td&gt;<span class="hljs-subst">$v</span>[apellido1] <span class="hljs-subst">$v</span>[apellido2]&lt;/td&gt;&quot;</span>.N;
+                    <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;td&gt;<span class="hljs-subst">$v</span>[nombre]&lt;/td&gt;&quot;</span>.N;
+                    <span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;fechaNacimiento&#x27;</span>]=<span class="hljs-title function_ invoke__">date</span>(<span class="hljs-string">&#x27;Y/m/d&#x27;</span>,<span class="hljs-title function_ invoke__">strtotime</span>(<span class="hljs-variable">$v</span>[<span class="hljs-string">&#x27;fechaNacimiento&#x27;</span>]));
+                    <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;td&gt;<span class="hljs-subst">$v</span>[fechaNacimiento]&lt;/td&gt;&quot;</span>.N;
+                <span class="hljs-comment">// echo gettype($v[&#x27;fechaNacimiento&#x27;]);</span>
+                    <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;td&gt;<span class="hljs-subst">$v</span>[curso]&lt;/td&gt;&quot;</span>.N;     
+                    <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;/tr&gt;&quot;</span>.N;
+                    
+                }
+                <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;/tbody&gt;&quot;</span>.N;
+
+                <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;/table&gt;&quot;</span>.N;
+                <span class="hljs-keyword">echo</span> <span class="hljs-variable">$t</span>;
+            }
+            <span class="hljs-comment">//print_r($alumnos);</span>
+            <span class="hljs-title function_ invoke__">tabla</span>(<span class="hljs-variable">$alumnos</span>);
+
+        }
+
+        
+    <span class="hljs-meta">?&gt;</span>
+</code></pre>
+<h3 id="generar-fich-ins">Generar fich ins</h3>
+<pre><code class="language-php">    <span class="hljs-meta">&lt;?php</span>
+        <span class="hljs-title function_ invoke__">header</span>(<span class="hljs-string">&#x27;Content-Type: text/html; charset=UTF-8&#x27;</span>);
+        <span class="hljs-title function_ invoke__">define</span>(<span class="hljs-string">&quot;N&quot;</span>,<span class="hljs-string">&quot;\n&quot;</span>);
+
+        <span class="hljs-title function_ invoke__">define</span>(<span class="hljs-string">&quot;RUTA&quot;</span>,<span class="hljs-string">&quot;../&quot;</span>);
+        <span class="hljs-title function_ invoke__">define</span>(<span class="hljs-string">&quot;TITULOS&quot;</span>,<span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;numexp&quot;</span> =&gt;<span class="hljs-string">&quot;Numero de expediente&quot;</span>,<span class="hljs-string">&quot;nombre&quot;</span> =&gt;<span class="hljs-string">&quot;Nombre&quot;</span>,<span class="hljs-string">&quot;ape1&quot;</span> =&gt;<span class="hljs-string">&quot;Primer Apellido&quot;</span>,<span class="hljs-string">&quot;ape2&quot;</span> =&gt;<span class="hljs-string">&quot;Segundo Apellido&quot;</span>,<span class="hljs-string">&quot;fnac&quot;</span>=&gt;<span class="hljs-string">&quot;Fecha nacimiento&quot;</span>,<span class="hljs-string">&quot;ciclo&quot;</span>=&gt;<span class="hljs-string">&quot;Ciclo formativo&quot;</span>));
+        
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">leerFich</span>(<span class="hljs-params"><span class="hljs-variable">$nomf</span></span>)</span>{
+            <span class="hljs-variable">$alumnos</span>= <span class="hljs-keyword">array</span>();
+            <span class="hljs-variable">$id</span>=<span class="hljs-number">0</span>;
+            <span class="hljs-variable">$f</span> = <span class="hljs-title function_ invoke__">fopen</span>(<span class="hljs-variable">$nomf</span>,<span class="hljs-string">&quot;r&quot;</span>);
+            <span class="hljs-comment">//Si el fichero par lectura no exites devuelve false</span>
+            <span class="hljs-keyword">if</span>(!<span class="hljs-variable">$f</span>) {
+                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;No existe el archivo &quot;</span>.<span class="hljs-variable">$nomf</span>;
+            }<span class="hljs-keyword">else</span>{
+            <span class="hljs-comment">//leer el archivo s por s</span>
+                <span class="hljs-variable">$lineaNum</span>=<span class="hljs-number">0</span>;
+                <span class="hljs-title function_ invoke__">define</span>(<span class="hljs-string">&quot;lineas&quot;</span>,<span class="hljs-number">4</span>);
+                <span class="hljs-keyword">while</span>(!<span class="hljs-title function_ invoke__">feof</span>(<span class="hljs-variable">$f</span>)){
+                    
+                    <span class="hljs-variable">$s</span> = <span class="hljs-title function_ invoke__">mb_convert_encoding</span>(<span class="hljs-title function_ invoke__">trim</span>(<span class="hljs-title function_ invoke__">fgets</span>(<span class="hljs-variable">$f</span>)),<span class="hljs-string">&#x27;UTF-8&#x27;</span>,<span class="hljs-string">&#x27;ISO-8859-1&#x27;</span>);
+                    
+                    <span class="hljs-keyword">switch</span>(<span class="hljs-variable">$lineaNum</span>%lineas){
+                        <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:
+                            <span class="hljs-variable">$id</span> = <span class="hljs-variable">$s</span>; 
+                            <span class="hljs-variable">$alumnos</span>[<span class="hljs-variable">$id</span>] = <span class="hljs-keyword">array</span>();
+                            <span class="hljs-keyword">break</span>;
+                        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+                            <span class="hljs-variable">$alumno</span>=<span class="hljs-title function_ invoke__">explode</span>(<span class="hljs-string">&quot; | &quot;</span>,<span class="hljs-variable">$s</span>);
+
+                            <span class="hljs-variable">$alumnos</span>[<span class="hljs-variable">$id</span>][<span class="hljs-string">&quot;nombre&quot;</span>] = <span class="hljs-variable">$alumno</span>[<span class="hljs-number">0</span>];
+                            <span class="hljs-variable">$alumnos</span>[<span class="hljs-variable">$id</span>][<span class="hljs-string">&quot;ape1&quot;</span>] = <span class="hljs-variable">$alumno</span>[<span class="hljs-number">1</span>];
+                            <span class="hljs-variable">$alumnos</span>[<span class="hljs-variable">$id</span>][<span class="hljs-string">&quot;ape2&quot;</span>] = <span class="hljs-variable">$alumno</span>[<span class="hljs-number">2</span>];                 
+                            <span class="hljs-keyword">break</span>;
+                        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+                            <span class="hljs-variable">$alumnos</span>[<span class="hljs-variable">$id</span>][<span class="hljs-string">&quot;fnac&quot;</span>] = <span class="hljs-title function_ invoke__">date</span>(<span class="hljs-string">&quot;d-m-Y&quot;</span>,<span class="hljs-title function_ invoke__">strtotime</span>(<span class="hljs-variable">$s</span>));
+                            <span class="hljs-keyword">break</span>;
+                        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:
+                            <span class="hljs-variable">$alumnos</span>[<span class="hljs-variable">$id</span>][<span class="hljs-string">&quot;ciclo&quot;</span>] =<span class="hljs-variable">$s</span>;
+                            <span class="hljs-keyword">break</span>;    
+                    }   
+                    <span class="hljs-variable">$lineaNum</span>++;
+                    
+                }
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-variable">$alumnos</span>;
+            
+        }   
+        <span class="hljs-variable">$aa</span> = <span class="hljs-title function_ invoke__">leerFich</span>(RUTA.<span class="hljs-string">&quot;alumnos.txt&quot;</span>);
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">generarFichInsert</span>(<span class="hljs-params"><span class="hljs-variable">$alumnos</span>,<span class="hljs-variable">$fichero</span></span>)</span>{
+
+            <span class="hljs-variable">$fout</span>=<span class="hljs-title function_ invoke__">fopen</span>(<span class="hljs-variable">$fichero</span>,<span class="hljs-string">&quot;w&quot;</span>);  
+            <span class="hljs-variable">$values</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;numexp&quot;</span>);    
+            <span class="hljs-variable">$primero</span>= <span class="hljs-variable">$alumnos</span>[<span class="hljs-title function_ invoke__">array_key_first</span>(<span class="hljs-variable">$alumnos</span>)];
+
+            <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$primero</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$k</span> =&gt; <span class="hljs-variable">$v</span>){
+                <span class="hljs-variable">$values</span>[] = <span class="hljs-variable">$k</span>;
+            }
+
+
+            <span class="hljs-variable">$cabezera</span>=<span class="hljs-string">&quot;INSERT INTO ALUMNOS (&quot;</span>;
+
+            <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$values</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$k</span> =&gt; <span class="hljs-variable">$v</span>){
+                <span class="hljs-variable">$cabezera</span>.=<span class="hljs-variable">$v</span>.<span class="hljs-string">&#x27;,&#x27;</span>;
+            }
+
+            <span class="hljs-variable">$cabezera</span>=<span class="hljs-title function_ invoke__">substr</span>(<span class="hljs-variable">$cabezera</span>,<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>);
+            <span class="hljs-variable">$cabezera</span>.=<span class="hljs-string">&quot;) VALUES (&quot;</span>;
+            
+
+            <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$alumnos</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$k</span> =&gt; <span class="hljs-variable">$v</span>){
+
+                <span class="hljs-variable">$insert</span>=<span class="hljs-variable">$cabezera</span>;
+                <span class="hljs-variable">$insert</span>.=<span class="hljs-title function_ invoke__">intval</span>(<span class="hljs-variable">$k</span>);
+                <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$v</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$c</span> =&gt;<span class="hljs-variable">$d</span>){
+                    
+                    <span class="hljs-keyword">if</span>(<span class="hljs-variable">$c</span>==<span class="hljs-string">&quot;numexp&quot;</span>){
+                        <span class="hljs-variable">$insert</span>.= <span class="hljs-string">&quot;,<span class="hljs-subst">$d</span>&quot;</span>;
+                    }<span class="hljs-keyword">elseif</span>(<span class="hljs-variable">$c</span>==<span class="hljs-string">&quot;fnac&quot;</span>){
+                        <span class="hljs-variable">$insert</span>.= <span class="hljs-title function_ invoke__">date</span>(<span class="hljs-string">&#x27;Y-m-d&#x27;</span>,<span class="hljs-title function_ invoke__">strtotime</span>(<span class="hljs-variable">$d</span>));
+                    }<span class="hljs-keyword">else</span>{
+                        <span class="hljs-variable">$insert</span>.= <span class="hljs-string">&quot;,\&quot;<span class="hljs-subst">$d</span>\&quot;&quot;</span>;
+                    }
+
+
+                }
+                <span class="hljs-variable">$insert</span>.=<span class="hljs-string">&quot;);\n&quot;</span>;
+                <span class="hljs-title function_ invoke__">fwrite</span>(<span class="hljs-variable">$fout</span>,<span class="hljs-variable">$insert</span>);
+
+            }
+        }
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">verTabla</span>(<span class="hljs-params"><span class="hljs-variable">$alumnos</span></span>)</span>{
+
+            <span class="hljs-variable">$t</span>=<span class="hljs-string">&quot;&lt;table border=&#x27;1&#x27;&gt;&quot;</span>.N;
+            <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;caption&gt;Alumnos de dam y daw&lt;/caption&gt;&quot;</span>.N;       
+            <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;thead&gt;&quot;</span>.N;
+
+            <span class="hljs-variable">$values</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&quot;numexp&quot;</span>);    
+            <span class="hljs-variable">$primero</span>= <span class="hljs-variable">$alumnos</span>[<span class="hljs-title function_ invoke__">array_key_first</span>(<span class="hljs-variable">$alumnos</span>)];
+
+            <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$primero</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$k</span> =&gt; <span class="hljs-variable">$v</span>){
+                <span class="hljs-variable">$values</span>[] = <span class="hljs-variable">$k</span>;
+            }
+
+            <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$values</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$k</span> =&gt; <span class="hljs-variable">$v</span>){
+                <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;th&gt;&quot;</span>.TITULOS[<span class="hljs-variable">$v</span>].<span class="hljs-string">&quot;&lt;/th&gt;&quot;</span>;
+            }
+            <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;/thead&gt;&quot;</span>.N;
+            <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;tbody&gt;&quot;</span>.N;
+
+            <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$alumnos</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$k</span> =&gt; <span class="hljs-variable">$v</span>){
+                <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;tr&gt;&quot;</span>.N;
+                <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;td&gt;<span class="hljs-subst">$k</span>&lt;/td&gt;&quot;</span>.N;
+                <span class="hljs-keyword">foreach</span>(<span class="hljs-variable">$v</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$c</span> =&gt; <span class="hljs-variable">$d</span>){
+                    <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;td&gt;<span class="hljs-subst">$d</span>&lt;/td&gt;&quot;</span>.N;
+                }
+    
+                <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;/tr&gt;&quot;</span>.N;
+                
+            }
+            <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;/tbody&gt;&quot;</span>.N;
+
+            <span class="hljs-variable">$t</span>.=<span class="hljs-string">&quot;&lt;/table&gt;&quot;</span>.N;
+            <span class="hljs-keyword">echo</span> <span class="hljs-variable">$t</span>;
+        }
+    
+        <span class="hljs-title function_ invoke__">verTabla</span>(<span class="hljs-variable">$aa</span>);
+        <span class="hljs-title function_ invoke__">generarFichInsert</span>(<span class="hljs-variable">$aa</span>,RUTA.<span class="hljs-string">&quot;script_insert.sql&quot;</span>);
+        
+    <span class="hljs-meta">?&gt;</span>
+
+</code></pre>
+<p><a href="#">Indice</a></p>
+<h2 id="sesiones-y-cookies">Sesiones y cookies</h2>
+<p><a href="#">Indice</a></p>
+<h1 id="metodos">Metodos</h1>
+<p><a href="#">Indice</a></p>
+
+        <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </body>
+    </html>
