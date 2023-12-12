@@ -22,7 +22,7 @@
                 Conn::$conn = new PDO($connStr,$this->user,$this->pwd);
 
                 /**
-                 * Configuramos la conexion para que lance execepciones cuando ocurra algun error
+                 * Configuramos la conexion para que lance excepciones cuando ocurra algun error
                  */
                 Conn::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }catch (PDOException $e){
