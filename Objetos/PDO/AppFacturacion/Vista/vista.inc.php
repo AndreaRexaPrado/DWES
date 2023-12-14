@@ -56,5 +56,26 @@
             $f.="</form>\n";
             echo $f;
         }
+
+        function formFiltros($filtros){
+            
+            $f="<form method=post action=".$_SERVER['PHP_SELF'].">\n";
+            
+            foreach($filtros as $campos){
+                if($campos['Field'] !='imagen'){
+                    $f.="<input type=";
+                    if(substr($campos['Type'],0,3)==='var'){
+                        $f.="'text'";
+                    }else{
+                        $f.="'number' min=0 ";
+                    }
+                    
+                    $f.="name='$campos[Field]' placeholder=".TITULOS[$campos['Field']].">\n";
+                }
+            }
+            $f.="<br><input type='submit' name='okFiltar' value='Buscar'>\n";
+            $f.="</form>\n";
+            echo $f;
+        }
     }
 ?>
