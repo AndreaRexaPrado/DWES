@@ -45,6 +45,6 @@
             echo"<h1>ERROR</h1>";
         }    
         return $result;
-    }
+        }
     }
 ?>

@@ -15,6 +15,7 @@
 	$daoProd = new ProductosDAO();
 	$daoUser = new udao();
 	$v->cabecera();
+	$sesionActiva = isset($_SESSION['usuario'])
 ?>
 <div style="overflow:hidden; width:100%; height:80%;">
 	<div id="tables" style="float:left; width:30%; ">
@@ -23,9 +24,7 @@
             <legend>Informacion del usuario: </legend>
 			 
 				<?php
-				
-					
-					
+								
 					if(isset($_SESSION['user'])){
 						if($_SESSION['rol']==='cli'){
 							echo "Usuario ".$_SESSION['user'];
@@ -51,12 +50,12 @@
 	</div> 
 			
 	<div id="cuerpo" style="width:70%; float:left;">
-	 <fieldset>
-	   <legend>Contenido principal: </legend>
+		<fieldset>
+	   		<legend>Contenido principal: </legend>
 	
 	
 <?php
-
+	print_r($_POST);
 	if(isset($_POST['btnLogIn'])){
 		$v->formLogin();
 		
@@ -73,27 +72,26 @@
 			header("Location: panel_app.php");
 			
 		}
-	}else if(isset($_POST['btnLogoOut'])){
-		session_unset();
-		session_destroy();
-		exit();
+	}else if(isset($_POST['btnLogOut'])){
+		header("Location: logout.php");
+
 
 	}else if(isset($_POST['okFiltar'])){
 		//print_r($_POST);
-		$daoProd->filtrado($_POST);
-
+		$result=$daoProd->filtrado($_POST);
+		$v->mostrarTablaProds($result);
 	}else{
-		
-		$v->mostrarTablaProds($daoProd->getAll());
+		$result=$daoProd->getAll();
+		$v->mostrarTablaProds($result);
 	}
 
 	
 
 ?>	
 	
-	</fieldset>
+			</fieldset>
 	
-    </div>
+    	</div>
 	
 	</div>
 </body>

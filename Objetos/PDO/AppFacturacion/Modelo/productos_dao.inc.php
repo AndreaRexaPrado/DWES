@@ -64,45 +64,48 @@ class ProductosDAO{
         }    
         return $result;
     }
+
     function filtrado($filtos){
-        
         $sql="SELECT * FROM productos ";
         $cont = 0; 
+        $bind = array();
+    
         foreach($filtos as $kf => $vf){
             if(!empty($vf) && $kf != 'okFiltar'){
                 if($cont === 0){
-                    $sql.="WHERE ";
+                    $sql .= "WHERE ";
                     $cont++;
-                }else{
-                    $sql.= " AND ";
+                } else {
+                    $sql .= " AND ";
                 }
-                
-                if(preg_match('/^[0-9]+$/',$vf)){
-                    
-                    $sql.= "$kf = $vf";
-                }else{
-                    $sql.= "$kf LIKE '%$vf%'";
+
+                if(is_numeric($vf)){                  
+                    $sql .= "$kf ".OPER[$kf]." ?";
+                    $bind[] = $vf; 
+                } else {
+                    $sql .= "$kf LIKE ?";
+                    $bind[] = "%$vf%";              
                 }
-                
             }
         }
-        $sql.=";";
-        try{
+        $sql .= ";";
+
+        try {
             $c = new Conn();
             $conn = $c->getConn();
     
-            //Ejecutar consulta no preparada
+            // Ejecutar consulta preparada
+            $stmt = $conn->prepare($sql);
+            $stmt->execute($bind);
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-           
-            $prods = $conn->query($sql);//Devuelve un objeto del tipo PDOStatement
-
-            $result=$prods->fetchAll(PDO::FETCH_ASSOC);
-
             $c->closeConn();
-        }catch(PDOException $e){
-            echo"<h1>ERROR</h1>";
-        }    
+        } catch (PDOException $e) {
+            echo "<h1>ERROR</h1> ".$e->getMessage();
+        }
+    
         return $result;
     }
+    
 }
 ?>
