@@ -107,5 +107,39 @@ class ProductosDAO{
         return $result;
     }
     
+    function carrito(){
+
+        $sql="SELECT cod,nom_prod,pvp,imagen,existencias FROM productos ";
+        $cont = 0; 
+        foreach($_SESSION['carr'] as $kf => $vf){
+            
+            if(!empty($vf)){
+                if($cont === 0){
+                    $sql .= "WHERE ";
+                    $cont++;
+                } else {
+                    $sql .= " OR ";
+                }
+                $sql .= "cod = $kf";
+
+            }
+        }
+
+        try {
+            $c = new Conn();
+            $conn = $c->getConn();
+    
+            // Ejecutar consulta preparada
+            $prods = $conn->query($sql);//Devuelve un objeto del tipo PDOStatement
+
+            $result=$prods->fetchAll(PDO::FETCH_ASSOC);
+
+            $c->closeConn();
+        } catch (PDOException $e) {
+            echo "<h1>ERROR</h1> ".$e->getMessage();
+        }
+    
+        return $result;
+    }
 }
 ?>

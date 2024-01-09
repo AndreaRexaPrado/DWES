@@ -8,5 +8,8 @@
     DEFINE("MAXUDS",10);
     DEFINE("OPER",array("cod"=>"=","nom_prod"=>"LIKE","pvp"=>"<=","prov"=>"LIKE","existencias"=>">="));
     DEFINE("TITULOS",array("cod"=>"Codigo","nom_prod"=>"Nombre producto","pvp"=>"Precio venta proveedor","prov"=>"Codigo provedor","imagen"=>"Imagen","existencias"=>"Stock"));
+    DEFINE("TITULOSCARRITO",array("cod"=>"Codigo","nom_prod"=>"Nombre producto","pvp"=>"Precio venta proveedor","imagen"=>"Imagen","existencias"=>"Stock"));
+    DEFINE("TITULOSFACTURA",array("uds"=>"Unidades","subtotal"=>"Sutotal"));
+
     
    

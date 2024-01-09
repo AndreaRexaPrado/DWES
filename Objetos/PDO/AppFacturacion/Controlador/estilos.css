@@ -1,0 +1,53 @@
+/* Estilos base para botones */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  /* Estilo para botones primarios */
+  .primary-button {
+    background-color: #3498db;
+    color: #fff;
+    border: 2px solid #3498db;
+  }
+  
+  /* Estilo para botones secundarios */
+  .secondary-button {
+    background-color: #2ecc71;
+    color: #fff;
+    border: 2px solid #2ecc71;
+  }
+  
+  /* Estilo para botones de alerta */
+  .warning-button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: 2px solid #e74c3c;
+  }
+  
+  /* Estilo para botones de éxito */
+  .success-button {
+    background-color: #27ae60;
+    color: #fff;
+    border: 2px solid #27ae60;
+  }
+  
+  /* Estilo para botones de información */
+  .info-button {
+    background-color: #3498db;
+    color: #fff;
+    border: 2px solid #3498db;
+  }
+  
+  /* Estilo para botones de desactivado */
+  .disabled-button {
+    background-color: #ccc;
+    color: #888;
+    border: 2px solid #ccc;
+    cursor: not-allowed;
+  }
