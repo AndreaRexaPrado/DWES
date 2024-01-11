@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <style>
+
+        form {
+            width: 30%;
+            margin: auto;
+        }
+
+        fieldset {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        legend {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<form>
+    <fieldset>
+        <legend>Login</legend>
+        <label for="usr">Usuario</label>
+        <input type="text" id="usr" name="usr">
+
+        <label for="pass">Contraseña</label>
+        <input type="password" id="pass" name="pass">
+
+        <input type="submit" name="okLogin">
+    </fieldset>
+</form>
+
+</body>
+</html>
