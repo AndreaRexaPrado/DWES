@@ -6,6 +6,7 @@
     {
         
     }
+    //Funcion que trae todos los usuarios
     function getAll(){
         try{
             $c = new Conn();
@@ -24,7 +25,7 @@
         }    
         return $result;
     }
-
+    //Funcion que trae el usuario con el que se loquea
     function get($usr,$pass){
         try{
             $c = new Conn();

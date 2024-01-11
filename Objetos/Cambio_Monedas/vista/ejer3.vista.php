@@ -13,7 +13,7 @@
             return $this->lang;
         }
 
-         function set_lang($lang){
+        function set_lang($lang){
             
              $this->lang = $lang;
         }
