@@ -218,8 +218,44 @@
         }
         //Cabecera
         function cabecera(){
-            $f="<h1>".LANG[$this->lang]["tit1"]."</h1>";
-            $f.=$this->formIdiomas();
+            $f="<nav class='navbar navbar-expand-lg navbar-dark'>
+            <a class='navbar-brand' href='#'>
+                <img src='../Img/CalicoElectronico-1.jpg' alt='Logo ELECTRONICAWEB' width='30' height='30' class='d-inline-block align-top'>
+                ELECTRONICAWEB
+            </a>
+            <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
+                <span class='navbar-toggler-icon'></span>
+            </button>
+            <div class='collapse navbar-collapse' id='navbarNav'>
+            <ul class='navbar-nav ml-auto'>
+                <li class='nav-item active'>
+                    <a class='nav-link' href='#'><i class='fas fa-home'></i> Inicio <span class='sr-only'>(current)</span></a>
+                </li>
+                <li class='nav-item'>
+                    <a class='nav-link' href='#'><i class='fas fa-shopping-cart'></i> Carrito</a>
+                </li>";
+               
+                    if (isset($_SESSION['user'])) {
+                        // Usuario autenticado
+                        $f.="\n<li class='nav-item' id='logoutButton'><a class='nav-link' href='#'><i class='fas fa-sign-out-alt'></i> Cerrar sesión</a></li>\n";
+                    } else {
+                        // Usuario no autenticado
+                        $f.="<li class='nav-item' id='loginButton'><a class='nav-link' href='#'><i class='fas fa-sign-in-alt'></i> Iniciar sesión</a></li>";
+                    }
+                
+                $f.="<li class='nav-item dropdown' id='languageSelect'>
+                    <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                        <i class='fas fa-globe'></i> Idioma
+                    </a>
+                    <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+                        <a class='dropdown-item' href='#'>Español</a>
+                        <a class='dropdown-item' href='#'>English</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        </nav>";
+           /* $f.=$this->formIdiomas();
             $f.="<div style=float:right;>";          
             $f.="<form method=post action=".$_SERVER['PHP_SELF'].">\n";
             $f.="<input name='btnLogIn' type='submit' value='Log in' class='button'>";
@@ -227,7 +263,7 @@
             $f.="<input name='btnCart' type='submit' value='".LANG[$this->lang]["btnCarr"]."' class='button'>";
             $f.="<input name='btnHome' type='submit' value='Home' class='button'>";
             $f.="</form>";
-            $f.="</div>";
+            $f.="</div>";*/
             echo $f;
         }
         //Formulario de login

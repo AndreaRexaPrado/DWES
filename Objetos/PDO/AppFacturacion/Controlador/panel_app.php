@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ElectronicaWeb</title>
-	<link rel="stylesheet" href="estilos.css">
+	<link rel="stylesheet" href="estilosv2.css">
+	 <!-- Incluye los archivos de Bootstrap y Font Awesome -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body> 
 <?php
@@ -15,23 +18,25 @@
 	//Session start
 	session_start();
 	//Si el la cookie para mantener la persistencia del idioma se pone en español por defecto
+	//echo "<h1>".isset($_COOKIE["idioma"])."<h1>";
 	if(!isset($_COOKIE["idioma"])){
 		setcookie("idioma","ES");
+		$v = new vista($_COOKIE["idioma"]);
+		header("Location: panel_app.php"); //Recargar la pagina
+	}else{
+		$v = new vista($_COOKIE["idioma"]);
 	}
 	//Cookie para guardar el carrito 
 	if(!isset($_SESSION['carr'])){
 		$_SESSION['carr']=[];
 	}
 	//Instanciacion de los objetos que necesitaremos mas adelante como el de vista para generarla
-	$v = new vista($_COOKIE["idioma"]);
+	
 	$daoProd = new ProductosDAO();
 	$daoUser = new udao();
 	//Metodo que imprime la cabecera
 	$v->cabecera();
 
-	
-
-	
 ?>
 <div style="overflow:hidden; width:100%; height:80%;">
 	<div id="tables" style="float:left; width:30%; ">
@@ -79,6 +84,7 @@
 	
 <?php
 	//Contenido principal
+	
 	//Funcion boton Login
 	if(isset($_POST['btnLogIn'])){
 		$v->formLogin();
@@ -185,7 +191,11 @@
 			</fieldset>
 	
     	</div>
-	
 	</div>
+	<!-- Incluye los archivos de jQuery y Bootstrap JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	
 </body>
 </html>

@@ -13,7 +13,7 @@
     //Idiomas
     DEFINE("IDIOMAS",array("ES"=>"Español","ENG"=>"English","FR"=>"Français","DE"=>"Deutsch"));
     //Traducciones de todos los mensajes
-    DEFINE("LANG",array("ES"=>array("tit1"=>"BIENVENIDO A LA TIENDA",
+    DEFINE("LANG",array("ES"=>array("tit1"=>"BIENVENIDE A ELECTRONICAWEB",
                                     "legUsr"=>"Informacion del usuario:",
                                     "msgIdent"=> "Identifícate para acceder a todas las funcionalidades",
                                     "legFil"=>"Filtros",
@@ -105,6 +105,3 @@
                                     "btnTramitar"=>"Kasse",
                                     "total"=>"Gesamtbestellung")                
                         ));
-
-    
-   
