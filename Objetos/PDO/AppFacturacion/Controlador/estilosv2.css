@@ -1,14 +1,5 @@
-/* Estilos base para botones */
-  .button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  body {
+
+body {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
@@ -35,13 +26,13 @@ a.navbar-brand:hover {
     margin-right: 20px;
 }
 
-.navbar-nav .nav-link {
-    color: #ffffff; /* Color del texto de los enlaces en la barra de navegación */
+.navbar-nav .btn {
+    color: #ffffff; /* Color del texto de los botones en la barra de navegación */
     margin: 0 10px;
 }
 
-.navbar-nav .nav-link:hover {
-    color: #f8f9fa; /* Color del texto de los enlaces al pasar el ratón */
+.navbar-nav .btn:hover {
+    color: #f8f9fa; /* Color del texto de los botones al pasar el ratón */
 }
 
 #logoutButton,

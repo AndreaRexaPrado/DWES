@@ -35,13 +35,13 @@
             margin-right: 20px;
         }
 
-        .navbar-nav .nav-link {
-            color: #ffffff; /* Color del texto de los enlaces en la barra de navegación */
+        .navbar-nav .btn {
+            color: #ffffff; /* Color del texto de los botones en la barra de navegación */
             margin: 0 10px;
         }
 
-        .navbar-nav .nav-link:hover {
-            color: #f8f9fa; /* Color del texto de los enlaces al pasar el ratón */
+        .navbar-nav .btn:hover {
+            color: #f8f9fa; /* Color del texto de los botones al pasar el ratón */
         }
 
         #logoutButton,
@@ -66,6 +66,7 @@
 <body>
 
 
+
 <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="#">
         <img src="tu_logo.png" alt="Logo ELECTRONICAWEB" width="30" height="30" class="d-inline-block align-top">
@@ -77,35 +78,35 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#"><i class="fas fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
+                <button class="btn nav-link" href="#"><i class="fas fa-home"></i> Inicio <span class="sr-only">(current)</span></button>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-box-open"></i> Productos</a>
+                <button class="btn nav-link" href="#"><i class="fas fa-box-open"></i> Productos</button>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Carrito</a>
+                <button class="btn nav-link" href="#"><i class="fas fa-shopping-cart"></i> Carrito</button>
             </li>
             <?php
                 if (isset($_SESSION['usuario'])) {
                     // Usuario autenticado
-                    echo '<li class="nav-item" id="logoutButton"><a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>';
+                    echo '<li class="nav-item" id="logoutButton"><button class="btn nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</button></li>';
                 } else {
                     // Usuario no autenticado
-                    echo '<li class="nav-item" id="loginButton"><a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i> Iniciar sesión</a></li>';
+                    echo '<li class="nav-item" id="loginButton"><button class="btn nav-link" href="#"><i class="fas fa-sign-in-alt"></i> Iniciar sesión</button></li>';
                 }
             ?>
             <li class="nav-item dropdown" id="languageSelect">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-globe"></i> Idioma
-                </a>
+                </button>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Español</a>
-                    <a class="dropdown-item" href="#">English</a>
+                    <button class="dropdown-item" href="#">Español</button>
+                    <button class="dropdown-item" href="#">English</button>
                 </div>
             </li>
         </ul>
     </div>
-
+</nav>
 
 <!-- Aquí podrías agregar el resto de tu contenido -->
 

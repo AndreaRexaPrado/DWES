@@ -84,7 +84,7 @@
 	
 <?php
 	//Contenido principal
-	
+
 	//Funcion boton Login
 	if(isset($_POST['btnLogIn'])){
 		$v->formLogin();
@@ -146,9 +146,9 @@
 			$daoProd->update();
 			//$v->factura($result);
 		}
-	}else if(isset($_POST["okIdioma"])){
+	}else if(isset($_POST["btnIdioma"])){
 			//Boton para la traducion que crea la cookie idioma con el valor del idioma seleccionado
-			setcookie("idioma",$_POST["idiomaSelec"]);			
+			setcookie("idioma",$_POST["btnIdioma"]);			
 			header("Location: panel_app.php");
 	}else {
 		//Boton que añade al carrito el id del producto y las unidades seleccionadas
