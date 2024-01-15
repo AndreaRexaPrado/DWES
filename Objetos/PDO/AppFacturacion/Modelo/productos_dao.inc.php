@@ -147,16 +147,12 @@ class ProductosDAO{
 
     function update(){
         /*Actualiza las existencias de los productos del carrito */
-        $sql=[];
-        foreach($_SESSION['carr'] as $kf => $vf){
-            $sql[$kf]="UPDATE productos SET existencias = existencias - ". $vf . " WHERE cod= ". $kf;
-        }
-        print_r($sql);
-        //Transancion
-        $this->transaccion($sql);
-    }
+        $sql="UPDATE productos SET existencias = existencias - ? WHERE cod= ?";
 
-    private function transaccion($sql){
+        //Transancion
+      
+        $fins = "INSERT INTO FACTURAS(usr) VALUES (?)";
+        $llins= "INSERT INTO LINEAS VALUES (?,?,?,?)";
         try {
             $c = new Conn();
             $conn = $c->getConn();
@@ -164,17 +160,39 @@ class ProductosDAO{
             //$conn->commit();
             //Set autocomito off
 
-           $conn->beginTransaction();
-                foreach($sql as $s) {
-                    
-                }
+            $conn->beginTransaction();
+            $pstmt = $conn->prepare($sql);
+            $cont=0;
+            foreach($_SESSION['carr'] as $kf => $vf) {
+                if($pstmt->execute([$vf,$kf])){
+                    $cont+=$pstmt->rowCount();
+                }                
+            }
+            
+            if($cont!= sizeof($_SESSION['carr'])){
+                throw new PDOException("Error en la actualizacion");
+            }else{
+                $pstmt = $conn->prepare($fins);
+                $pstmt->execute([$_SESSION['user']]);
 
-            $c->closeConn();
+                $facturaId = $conn->lastInsertId();
+                $pstmt = $conn->prepare($llins);
+                $cont=1;
+                foreach($_SESSION['carr'] as $kf => $vf) {
+                    $pstmt->execute([$facturaId,$cont,$vf,$kf]);
+                    $cont+=1;                      
+                }
+            }
+            $conn->commit();
+           
         } catch (PDOException $e) {
             $conn->rollBack();
             echo "<h1>ERROR</h1> ".$e->getMessage();
         }
-
+        $c->closeConn();
     }
+
+  
+  
 }
 ?>

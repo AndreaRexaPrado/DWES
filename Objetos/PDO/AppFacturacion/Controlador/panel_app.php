@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ElectronicaWeb</title>
-	<link rel="stylesheet" href="estilosv2.css">
+	<link rel="stylesheet" href="estilosv3.css">
 	 <!-- Incluye los archivos de Bootstrap y Font Awesome -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -30,6 +30,9 @@
 	if(!isset($_SESSION['carr'])){
 		$_SESSION['carr']=[];
 	}
+	if(!isset($_SESSION['userCompl'])){
+		$_SESSION['userCompl']=[];
+	}
 	//Instanciacion de los objetos que necesitaremos mas adelante como el de vista para generarla
 	
 	$daoProd = new ProductosDAO();
@@ -39,16 +42,18 @@
 
 ?>
 <div style="overflow:hidden; width:100%; height:80%;">
-	<div id="tables" style="float:left; width:30%; ">
+	<div id="tables" style="float:left; width:30%; " class="info-div">
         
         <fieldset>
 		<legend><?php echo LANG[$v->get_lang()]["legUsr"]?> </legend>
-			 
+			 	
 				<?php
+					print_r($_SESSION['userCompl']);
 					//Panel datos del usuario			
-					if(isset($_SESSION['user'])){
-						if($_SESSION['rol']==='cli'){
-							echo LANG[$v->get_lang()]["user"] . " " .$_SESSION['user'];
+					if(!empty($_SESSION['userCompl'])){
+						$user=$_SESSION['userCompl'][0];
+						if($user['rol']==='cli'){
+							echo LANG[$v->get_lang()]["user"] . " " .$user['nom_cli']. " " .$user['ap_cli'];
 	
 
 						}else{
@@ -74,17 +79,17 @@
 					$v->formFiltros($daoProd->camposTabla());
 				?>
 		</fieldset>
-		</div>
+	</div>
 	</div> 
 			
-	<div id="cuerpo" style="width:70%; float:left;">
+	<div id="cuerpo" style="width:70%; float:left;" class="main-div">
 		<fieldset>
 	   		<legend><?php echo LANG[$v->get_lang()]["legContPri"]?></legend>
 	
 	
 <?php
 	//Contenido principal
-
+	var_dump($_SESSION);		
 	//Funcion boton Login
 	if(isset($_POST['btnLogIn'])){
 		$v->formLogin();
@@ -99,10 +104,10 @@
 		if(empty($user)){
 			echo "<h2>".LANG[$v->get_lang()]["userNoVal"]."</h2>";
 		}else{
+			$_SESSION['userCompl']=$user;
+			/*$_SESSION['user']=$user[0]['usr'];
+			$_SESSION['rol']=$user[0]['rol'];*/
 			
-			$_SESSION['user']=$user[0]['usr'];
-			$_SESSION['rol']=$user[0]['rol'];
-			$_SESSION["commit"]=1;
 			header("Location: panel_app.php"); //Recargar la pagina
 			
 		}
@@ -134,18 +139,28 @@
 
 	}else if(isset($_POST['btnRegresarFact'])){
 		//Boton que regresa al carrito desde la factira
-			unset($_SESSION['commit']);
-			header("Location: panel_app.php");
-
+		unset($_SESSION['commit']);
+		header("Location: panel_app.php");
+	}else if(isset($_POST['btnTramitarFact'])){
+		$daoProd->update();
+		
+		unset($_SESSION['commit']);
+		unset($_SESSION['incarr']);
+		$_SESSION['carr']=[];
+	
+		header("Location: panel_app.php");	
+		echo '<script type="text/javascript">alert("Compra confirmada. ID de factura: ' . $facturaId . '");</script>';
+	
 	}else if(isset($_POST['btnTramitar'])){
 		/*Boton en el carrito para tramitar el pedido,si no esta logeado le manda al formulario de logeo y si no muestra la factura*/
 		if(!isset($_SESSION['user'])){
-			$v->formLogin();	
+			$v->formLogin();
+			$_SESSION["commit"]=1;	
 		}else{
 			$result=$daoProd->carrito();
-			$daoProd->update();
-			//$v->factura($result);
+			$v->factura($result);		
 		}
+	
 	}else if(isset($_POST["btnIdioma"])){
 			//Boton para la traducion que crea la cookie idioma con el valor del idioma seleccionado
 			setcookie("idioma",$_POST["btnIdioma"]);			

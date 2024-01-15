@@ -5,7 +5,9 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #f8f9fa; /* Color de fondo del cuerpo */
 }
-
+th, td{
+    text-align: center;
+}
 nav.navbar {
     background-color: #343a40; /* Color de fondo de la barra de navegación */
 }

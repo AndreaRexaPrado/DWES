@@ -34,7 +34,7 @@
     
             //Ejecutar consulta preparada
     
-            $sql = "SELECT usr,rol FROM usuarios WHERE usr=:usr AND pass=:pass";
+            $sql = "SELECT * FROM usuarios WHERE usr=:usr AND pass=:pass";
             $pstmt = $conn->prepare($sql);//Devuelve un objeto del tipo PDOStatement
             $pstmt->bindValue(':usr',$usr);
             $pstmt->bindValue(':pass',$pass);
@@ -44,7 +44,8 @@
             $c->closeConn();
         }catch(PDOException $e){
             echo"<h1>ERROR</h1>";
-        }    
+        }
+       
         return $result;
         }
     }

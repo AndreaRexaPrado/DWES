@@ -57,8 +57,9 @@
                 echo "<h3>".LANG[$this->lang]["msgProdVacio"]."<br><a href=".$_SERVER['PHP_SELF'].">".LANG[$this->lang]["continuar"]."</a></h3>";
             }else{           
                 
+                $t="<div class='container'>".N;     
                 
-                $t="<table>".N;     
+                $t.="<table>".N;     
                 $t.="<thead>".N;
                 $keys = array_keys($prods[array_key_first($prods)]);
         
@@ -81,12 +82,13 @@
 
                     }
                     
-                    $t.="<td>".$this->ops_uds($v['existencias'],$v['cod'])."<td>"; //Celda para el select de unidades
+                    $t.="<td>".$this->ops_uds($v['existencias'],$v['cod'])."</td>"; //Celda para el select de unidades
                     $t.="</tr>".N;   
                 }
 
                 $t.="</tbody>".N;
                 $t.="</table>".N;
+                $t.="</div>".N;
                 echo $t;
             }  
         
@@ -220,23 +222,24 @@
                         <li class='nav-item'>
                             <button class='btn nav-link' href='#' name='btnCart' type='submit'><i class='fas fa-shopping-cart'></i> Carrito</button>
                         </li>";
-               
-                    if (isset($_SESSION['user'])) {
-                        // Usuario autenticado
-                        $f.="\n<li class='nav-item' id='logoutButton' name='btnLogIn' type='submit' ><button class='btn nav-link' href='#'><i class='fas fa-sign-out-alt'></i> Cerrar sesión</button></li>\n";
-                    } else {
-                        // Usuario no autenticado
-                        $f.="<li class='nav-item' id='loginButton' name='btnLogOut' type='submit'><button class='btn nav-link' href='#'><i class='fas fa-sign-in-alt'></i> Iniciar sesión</button></li>";
-                    }
-                
                 $f.="<li class='nav-item dropdown' id='languageSelect'>
                         <button class='btn nav-link dropdown-toggle' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fas fa-globe'></i> Idioma </button>
                                 <div class='dropdown-menu' aria-labelledby='navbarDropdown'>";
-                $f.=$this->formIdiomas();    
-                $f.="           </div>
-                            </li>
-                        </ul>
-                    </div>
+                                
+                $f.=$this->formIdiomas(); 
+   
+                    if (!empty($_SESSION['user'])) {
+                        // Usuario autenticado
+                        $f.="\n<li class='nav-item'><button class='btn nav-link' name='btnLogOut' type='submit' href='#'><i class='fas fa-sign-out-alt'></i> Cerrar sesión</button></li>\n";
+                    } else {
+                        // Usuario no autenticado
+                        $f.="\n<li class='nav-item'><button class='btn nav-link' name='btnLogIn' type='submit' href='#'><i class='fas fa-sign-in-alt'></i> Iniciar sesión</button></li>\n";
+                    }
+                
+                    $f.="</div>
+                    </li>
+                </ul>
+                </div>
                     </nav>
                 </form>";
             echo $f;
@@ -260,7 +263,7 @@
         //Formulario de filtrado
         function formFiltros($filtros){
             
-            $f="<form method=post action=".$_SERVER['PHP_SELF'].">\n";
+            $f="<form method=post action=".$_SERVER['PHP_SELF']." class= 'formFiltros'>\n";
             
             foreach($filtros as $campos){
                 if($campos['Field'] !='imagen'){
@@ -272,10 +275,10 @@
                         $f.="'number' min=0 ";
                     }
                     
-                    $f.="name='$campos[Field]' placeholder=".LANG[$this->lang]["titulos"][$campos['Field']]."><br>\n";
+                    $f.="name='$campos[Field]' placeholder='".LANG[$this->lang]["titulos"][$campos['Field']]."' class='inputFiltros'><br>\n";
                 }
             }
-            $f.="<br><input type='submit' name='okFiltar' value='".LANG[$this->lang]["botFil"]."'>\n";
+            $f.="<br><input type='submit' name='okFiltar' value='".LANG[$this->lang]["botFil"]."' class='buttonFiltros'>\n";
             $f.="</form>\n";
             echo $f;
         }
