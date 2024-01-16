@@ -67,6 +67,12 @@
                     $t.="<th>".LANG[$this->lang]["titulos"][$v]."</th>";           
                 }
                 $t.="<th>Unidades</th>";      
+                /*if(isset($_SESSION['rol'])){
+                    if($_SESSION['rol']==='adm'){
+                        $t.="<th>Administracion</th>";   
+                    }
+                       
+                }*/
                 $t.="</thead>".N;
                 $t.="<tbody>".N;
                 foreach($prods as $k => $v){
@@ -76,6 +82,9 @@
                         
                         if($kv==="imagen"){
                             $t.="<td><img src='../Img/$vv' alt='$vv' width ='100' height='100'></td>";
+                        }else if($kv==="cod"){
+                            $id=$vv;
+                            $t.="<td>".$vv."</td>"; 
                         }else{
                             $t.="<td>".$vv."</td>"; 
                         }
@@ -83,6 +92,13 @@
                     }
                     
                     $t.="<td>".$this->ops_uds($v['existencias'],$v['cod'])."</td>"; //Celda para el select de unidades
+                   /* if(isset($_SESSION['rol'])){
+                        if($_SESSION['rol']==='adm'){
+                            $t.="<td><input type='submit' name='btnEditAdm[".$id."]' value='Edit'>";
+                            $t.="<input type='submit' name='btnDelAdm[".$id."]' value='Del'></td>";
+                        }
+                    }*/
+
                     $t.="</tr>".N;   
                 }
 
@@ -212,7 +228,7 @@
             $f="
             <form method=post action=".$_SERVER['PHP_SELF'].">
                 <nav class='navbar navbar-expand-lg navbar-dark'>
-                    <a class='navbar-brand' href='#'><img src='../Img/CalicoElectronico-1.jpg' alt='Logo ELECTRONICAWEB' width='30' height='30' class='d-inline-block align-top'>ELECTRONICAWEB</a>
+                    <a class='navbar-brand' href='panel_app.php'><img src='../Img/CalicoElectronico-1.jpg' alt='Logo ELECTRONICAWEB' width='30' height='30' class='d-inline-block align-top'>ELECTRONICAWEB</a>
                     <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'><span class='navbar-toggler-icon'></span></button>
                     <div class='collapse navbar-collapse' id='navbarNav'>
                     <ul class='navbar-nav ml-auto'>
@@ -224,25 +240,31 @@
                         </li>";
                 $f.="<li class='nav-item dropdown' id='languageSelect'>
                         <button class='btn nav-link dropdown-toggle' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fas fa-globe'></i> Idioma </button>
-                                <div class='dropdown-menu' aria-labelledby='navbarDropdown'>";
-                                
+                                <div class='dropdown-menu' aria-labelledby='navbarDropdown'>";          
                 $f.=$this->formIdiomas(); 
-   
-                    if (!empty($_SESSION['user'])) {
-                        // Usuario autenticado
-                        $f.="\n<li class='nav-item'><button class='btn nav-link' name='btnLogOut' type='submit' href='#'><i class='fas fa-sign-out-alt'></i> Cerrar sesión</button></li>\n";
-                    } else {
-                        // Usuario no autenticado
-                        $f.="\n<li class='nav-item'><button class='btn nav-link' name='btnLogIn' type='submit' href='#'><i class='fas fa-sign-in-alt'></i> Iniciar sesión</button></li>\n";
-                    }
+                $f.="</div>
+                    </li>";
+                if (isset($_SESSION['user'])) {
+                    // Usuario autenticado
+                    $f.="\n<li class='nav-item'><button class='btn nav-link' name='btnLogOut' type='submit' href='#'><i class='fas fa-sign-out-alt'></i> Cerrar sesión</button></li>\n";
+
+                    if($_SESSION['rol']=="adm"){  
+                          
+                           $f.="\n<li class='nav-item'><button class='btn nav-link' name='btnNuevoProd' type='submit' href='#'><i class='fas fa-sign-out-alt'></i> Nuevo prod</button></li>\n";
+                    } 
+                    
+                } else {
+                    // Usuario no autenticado
+                    $f.="\n<li class='nav-item'><button class='btn nav-link' name='btnLogIn' type='submit' href='#'><i class='fas fa-sign-in-alt'></i> Iniciar sesión</button></li>\n";
+                } 
+
                 
-                    $f.="</div>
-                    </li>
-                </ul>
+    
+                $f.="</ul>
                 </div>
                     </nav>
                 </form>";
-            echo $f;
+            return $f;
         }
         //Formulario de login
         function formLogin(){
@@ -280,7 +302,7 @@
             }
             $f.="<br><input type='submit' name='okFiltar' value='".LANG[$this->lang]["botFil"]."' class='buttonFiltros'>\n";
             $f.="</form>\n";
-            echo $f;
+            return $f;
         }
     }
 ?>

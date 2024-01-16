@@ -30,15 +30,14 @@
 	if(!isset($_SESSION['carr'])){
 		$_SESSION['carr']=[];
 	}
-	if(!isset($_SESSION['userCompl'])){
-		$_SESSION['userCompl']=[];
-	}
+
+
 	//Instanciacion de los objetos que necesitaremos mas adelante como el de vista para generarla
 	
 	$daoProd = new ProductosDAO();
 	$daoUser = new udao();
 	//Metodo que imprime la cabecera
-	$v->cabecera();
+	echo $v->cabecera();
 
 ?>
 <div style="overflow:hidden; width:100%; height:80%;">
@@ -48,12 +47,12 @@
 		<legend><?php echo LANG[$v->get_lang()]["legUsr"]?> </legend>
 			 	
 				<?php
-					print_r($_SESSION['userCompl']);
+					
 					//Panel datos del usuario			
-					if(!empty($_SESSION['userCompl'])){
-						$user=$_SESSION['userCompl'][0];
-						if($user['rol']==='cli'){
-							echo LANG[$v->get_lang()]["user"] . " " .$user['nom_cli']. " " .$user['ap_cli'];
+					if(isset($_SESSION['user'])){
+					
+						if($_SESSION['rol']==='cli'){
+							echo LANG[$v->get_lang()]["user"] ." ". $_SESSION['user'];
 	
 
 						}else{
@@ -73,23 +72,21 @@
 			  
 	<div>
 		<fieldset>
-		<legend><?php echo LANG[$v->get_lang()]["legFil"]?> </legend>
-				<?php
+		<legend><?php echo LANG[$v->get_lang()]["legFil"]?></legend><?php 
+					
 					//Panel de filtros
-					$v->formFiltros($daoProd->camposTabla());
-				?>
-		</fieldset>
+					$filtros=$v->formFiltros($daoProd->camposTabla());
+					echo $filtros;?>
+					
 	</div>
 	</div> 
 			
 	<div id="cuerpo" style="width:70%; float:left;" class="main-div">
 		<fieldset>
 	   		<legend><?php echo LANG[$v->get_lang()]["legContPri"]?></legend>
-	
-	
 <?php
 	//Contenido principal
-	var_dump($_SESSION);		
+	print_r($_SESSION);
 	//Funcion boton Login
 	if(isset($_POST['btnLogIn'])){
 		$v->formLogin();
@@ -104,17 +101,17 @@
 		if(empty($user)){
 			echo "<h2>".LANG[$v->get_lang()]["userNoVal"]."</h2>";
 		}else{
-			$_SESSION['userCompl']=$user;
-			/*$_SESSION['user']=$user[0]['usr'];
-			$_SESSION['rol']=$user[0]['rol'];*/
+			//$_SESSION['userCompl']=$user;
+			$_SESSION['user']=$user[0]['usr'];
+			$_SESSION['rol']=$user[0]['rol'];
 			
 			header("Location: panel_app.php"); //Recargar la pagina
 			
 		}
 	}else if(isset($_POST['btnLogOut'])){
 		//Deslogeo del usuario, manda a pagina de logout donde se destruye la sesion
-		header("Location: logout.php");
-
+		
+		header("Location:logout.php");
 
 	}else if(isset($_POST['okFiltar'])){
 		//Filtra los productos segun los introducidos en los filtros y muestra el resultado
