@@ -14,6 +14,7 @@
 	//Includes
 	include("../modelo/productos_dao.inc.php");
 	include("../modelo/users_dao.inc.php");
+	include("../modelo/prov_dao.inc.php");
 	include("../vista/vista.inc.php");
 	//Session start
 	session_start();
@@ -36,6 +37,7 @@
 	
 	$daoProd = new ProductosDAO();
 	$daoUser = new udao();
+	$daoProv = new provdao();
 	//Metodo que imprime la cabecera
 	echo $v->cabecera();
 
@@ -75,7 +77,7 @@
 		<legend><?php echo LANG[$v->get_lang()]["legFil"]?></legend><?php 
 					
 					//Panel de filtros
-					$filtros=$v->formFiltros($daoProd->camposTabla());
+					$filtros=$v->formFiltros($daoProd->camposTabla(),[]);
 					echo $filtros;?>
 					
 	</div>
@@ -86,7 +88,9 @@
 	   		<legend><?php echo LANG[$v->get_lang()]["legContPri"]?></legend>
 <?php
 	//Contenido principal
-	print_r($_SESSION);
+	//print_r($_SESSION);
+	//print_r($_POST);
+
 	//Funcion boton Login
 	if(isset($_POST['btnLogIn'])){
 		$v->formLogin();
@@ -139,7 +143,7 @@
 		unset($_SESSION['commit']);
 		header("Location: panel_app.php");
 	}else if(isset($_POST['btnTramitarFact'])){
-		$daoProd->update();
+		$daoProd->updateExistecias();
 		
 		unset($_SESSION['commit']);
 		unset($_SESSION['incarr']);
@@ -162,6 +166,28 @@
 			//Boton para la traducion que crea la cookie idioma con el valor del idioma seleccionado
 			setcookie("idioma",$_POST["btnIdioma"]);			
 			header("Location: panel_app.php");
+	}else if(isset($_POST["btnNuevoProd"])){
+		//Boton para formulario inserccion de un nuevo producto
+		$cifs=$daoProv->getCif();
+		$filtros=$v->formFiltros($daoProd->camposTabla(),$cifs,1);
+		echo $filtros;
+	}else if(isset($_POST["okInsert"])){
+		$daoProd->insert($_POST);
+		header("Location: panel_app.php");
+
+	}else if(isset($_POST['btnEditAdm'])){	
+		$cod = array_key_first($_POST['btnEditAdm']);
+		
+		$result=$daoProd->get($cod);
+		$cifs=$daoProv->getCif();
+		$filtros=$v->formFiltros($daoProd->camposTabla(),$cifs,2,$result);
+		echo $filtros;
+
+		//print_r($result);
+
+	}else if(isset($_POST["okUpdate"])){
+		print_r($_POST);
+
 	}else {
 		//Boton que añade al carrito el id del producto y las unidades seleccionadas
 		if(isset($_POST['btnUds'])&&$_POST['selUds']>0){

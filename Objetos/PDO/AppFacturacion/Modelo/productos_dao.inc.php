@@ -65,6 +65,7 @@ class ProductosDAO{
         }    
         return $result;
     }
+
     //Funcion que filtra los objetos segun los filtros pasados
     function filtrado($filtos){
         $sql="SELECT * FROM productos ";
@@ -145,7 +146,7 @@ class ProductosDAO{
         return $result;
     }
 
-    function update(){
+    function updateExistecias(){
         /*Actualiza las existencias de los productos del carrito */
         $sql="UPDATE productos SET existencias = existencias - ? WHERE cod= ?";
 
@@ -192,7 +193,55 @@ class ProductosDAO{
         $c->closeConn();
     }
 
-  
+    function insert($prod){
+        /*Actualiza las existencias de los productos del carrito */
+        $sqlMaxId="SELECT max(cod) as cod FROM productos";
+
+        //Transancion
+      
+
+        $pins= "INSERT INTO productos VALUES (?,?,?,?,?,?)";
+        try {
+            $c = new Conn();
+            $conn = $c->getConn();
+    
+            //$conn->commit();
+            //Set autocomito off
+
+            $conn->beginTransaction();
+            $query = $conn->query($sqlMaxId);
+            $maxID=$query->fetchAll(PDO::FETCH_ASSOC);
+            $bind = array(); //Array para luego pasarlo a la consulta preparada
+           
+
+            $bind[] = $maxID[0]['cod']+1;
+            foreach($prod as $kp => $vp){
+                if($kp!='okInsert'){
+                    if($kp == 'pvp'){
+                        $bind[]=number_format($vp,2, '.', '');
+                    }else{
+                        $bind[]=$vp;
+
+                    }
+                }
+            }
+            //print_r($bind);
+            $pstmt = $conn->prepare($pins);
+            $pstmt->execute($bind);
+            $conn->commit();
+
+           
+        } catch (PDOException $e) {
+            $conn->rollBack();
+            echo "<h1>ERROR</h1> ".$e->getMessage();
+        }
+        $c->closeConn();
+    }
+    
+    function updateProd($prod){
+
+    }
+  /*Mismo campos que prod con old y new en ellos excepto codigo,usr,rol,dni,sentence,dni */
   
 }
 ?>

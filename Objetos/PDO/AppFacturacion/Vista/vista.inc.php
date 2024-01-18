@@ -67,12 +67,12 @@
                     $t.="<th>".LANG[$this->lang]["titulos"][$v]."</th>";           
                 }
                 $t.="<th>Unidades</th>";      
-                /*if(isset($_SESSION['rol'])){
+                if(isset($_SESSION['user'])){
                     if($_SESSION['rol']==='adm'){
                         $t.="<th>Administracion</th>";   
                     }
                        
-                }*/
+                }
                 $t.="</thead>".N;
                 $t.="<tbody>".N;
                 foreach($prods as $k => $v){
@@ -92,12 +92,17 @@
                     }
                     
                     $t.="<td>".$this->ops_uds($v['existencias'],$v['cod'])."</td>"; //Celda para el select de unidades
-                   /* if(isset($_SESSION['rol'])){
+                    if(isset($_SESSION['user'])){
                         if($_SESSION['rol']==='adm'){
-                            $t.="<td><input type='submit' name='btnEditAdm[".$id."]' value='Edit'>";
-                            $t.="<input type='submit' name='btnDelAdm[".$id."]' value='Del'></td>";
+                            
+                            $t.="<td>
+                                    <form method=post action=".$_SERVER['PHP_SELF'].">\n
+                                        <input type='submit' name='btnEditAdm[".$id."]' value='Edit'>
+                                        <input type='submit' name='btnDelAdm[".$id."]' value='Del'>
+                                    </form>    
+                            </td>";
                         }
-                    }*/
+                    }
 
                     $t.="</tr>".N;   
                 }
@@ -245,13 +250,14 @@
                 $f.="</div>
                     </li>";
                 if (isset($_SESSION['user'])) {
+                    if($_SESSION['rol']==="adm"){   
+                        
+                        $f.="\n<li class='nav-item'><button class='btn nav-link' name='btnNuevoProd' type='submit' href='#'><i class='fa-solid fa-plus'></i>Nuevo prod</button></li>\n";
+                    } 
                     // Usuario autenticado
                     $f.="\n<li class='nav-item'><button class='btn nav-link' name='btnLogOut' type='submit' href='#'><i class='fas fa-sign-out-alt'></i> Cerrar sesión</button></li>\n";
 
-                    if($_SESSION['rol']=="adm"){  
-                          
-                           $f.="\n<li class='nav-item'><button class='btn nav-link' name='btnNuevoProd' type='submit' href='#'><i class='fas fa-sign-out-alt'></i> Nuevo prod</button></li>\n";
-                    } 
+
                     
                 } else {
                     // Usuario no autenticado
@@ -283,24 +289,80 @@
         }
 
         //Formulario de filtrado
-        function formFiltros($filtros){
-            
+        function formFiltros($filtros,$prov,$acc=0,$prod=[]){
+      
             $f="<form method=post action=".$_SERVER['PHP_SELF']." class= 'formFiltros'>\n";
-            
+           
             foreach($filtros as $campos){
-                if($campos['Field'] !='imagen'){
-                    $f.="<input type=";
-                    //Si el campo en la bbdd es de tipo var el input text si no number
-                    if(substr($campos['Type'],0,3)==='var'){
-                        $f.="'text'";
-                    }else{
-                        $f.="'number' min=0 ";
+                if($acc==0){
+                    if($campos['Field'] !='imagen'){
+                        $f.="<input type=";
+                        //Si el campo en la bbdd es de tipo var el input text si no number
+                        if(substr($campos['Type'],0,3)==='var'){
+                            $f.="'text'";
+                        }else{
+                            $f.="'number' min=0 ";
+                        }
+                        
+                        $f.="name='$campos[Field]' placeholder='".LANG[$this->lang]["titulos"][$campos['Field']]."' class='inputFiltros'><br>\n";
                     }
-                    
-                    $f.="name='$campos[Field]' placeholder='".LANG[$this->lang]["titulos"][$campos['Field']]."' class='inputFiltros'><br>\n";
-                }
+                }else{
+
+                    if($campos['Field'] == 'prov'){
+                        $f.="<label>".LANG[$this->lang]["titulos"][$campos['Field']]."</label>";
+                        $f.="<select name='prov'>";
+                        foreach($prov as $kp => $vp){
+                            foreach($vp as $kkp => $vvp){
+                                $f.="<option value='$vvp'";
+
+                                if(!empty($prod)){
+                                    if($vvp == $prod[0]['prov']){
+                                        $f.=" selected ";
+                                    }
+                                }
+                                $f.=">$vvp</option>;";
+                            }
+                        }
+                        $f.="</select>";
+                    }else{
+                        $f.="<input type=";
+                        //Si el campo en la bbdd es de tipo var el input text si no number
+                        if($campos['Field'] !='cod'){
+                            if($campos['Field'] =='imagen'){
+                                $f.="'text'";
+                            }else if(substr($campos['Type'],0,3)==='var'){
+                                $f.="'text'";
+                            }else{
+                                $f.="'number' min=0 step='any'";
+                            }
+
+                            $f.="name='$campos[Field]' placeholder='".LANG[$this->lang]["titulos"][$campos['Field']]."' class='inputFiltros' size ='20'";
+                         
+                            if(!empty($prod)){
+                                $f.="value= ".$prod[0][$campos['Field']]."><br>\n";
+                            }else{
+                                $f.="><br>\n";
+                            }
+                            
+                        }else{
+                            /*if(!empty($prod)){
+                                $f.="<input type='hidden' name='$campos[Field]' value='".$prod[0][$campos['Field']]."'";
+                            }*/
+                        }
+                    }
+                }    
             }
-            $f.="<br><input type='submit' name='okFiltar' value='".LANG[$this->lang]["botFil"]."' class='buttonFiltros'>\n";
+            if($acc==0){
+                $f.="<br><input type='submit' name='okFiltar' value='".LANG[$this->lang]["botFil"]."' class='buttonFiltros'>\n";
+            }else if($acc==1){
+                $f.="<br><input type='submit' name='okInsert' value='Insertar' class='buttonFiltros'>\n";
+                $f.="<input type='submit' name='btnRegresar' value='".LANG[$this->lang]["continuar"]."' class='buttonFiltros''>";
+
+            }else{
+                $f.="<br><input type='submit' name='okUpdate' value='Actualizar' class='buttonFiltros'>\n";
+                $f.="<input type='submit' name='btnRegresar' value='".LANG[$this->lang]["continuar"]."' class='buttonFiltros''>";
+
+            }
             $f.="</form>\n";
             return $f;
         }
